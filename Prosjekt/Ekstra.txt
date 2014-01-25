@@ -1,0 +1,3 @@
+Husk notifications.
+Husk et kart som viser veien til nærmeste trafikkstasjon ved hjelp av gps.
+husk å bruke fragments
