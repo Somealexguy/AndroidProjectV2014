@@ -173,6 +173,173 @@ http://www.klikk.no/emne/trafikkregler
 		</question>
 	</category>
 	<category field="skilt">
+		<question>
+        <formulation>
+		<ImageView
+			<android:imageResId="@drawable/farligvegskulder.jpg"/>
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+    
+	    <question>
+        <formulation>
+		<ImageView
+			<android:imageResId="@drawable/gatetun.jpg"/>
+			Hva er høyeste tillatte fart etter at du har passert dette skiltet?
+        </formulation>
+        <alternative >
+            30 km/t.
+        </alternative>
+        <alternative>
+            40 km/t.
+        </alternative>
+        <alternative isCorrect="true">
+            Gangfart.
+        </alternative>
+    </question>
+	
+	    <question>
+        <formulation>
+		<ImageView
+			<android:imageResId="@drawable/531feltfart.jpg"/>
+			Du er på vei inn på motorvei. Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            Felt for fartsøkning
+        </alternative>
+        <alternative>
+            Kjørebane har 3 felt i samme retning.
+        </alternative>
+        <alternative>
+            Sammenfletting
+        </alternative>
+    </question>
+	
+	    <question>
+        <formulation>
+		<ImageView
+			<android:imageResId="@drawable/slash60.jpg"/>
+			Du kjører på landevei. Hva er maks hastighet når du passerer dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            80 km/t.
+        </alternative>
+        <alternative>
+            70 km/t.
+        </alternative>
+        <alternative>
+            90 km/t.
+        </alternative>
+    </question>
+	
+	 <question>
+        <formulation>
+		<ImageView
+			<android:imageResId="@drawable/parkeringssone.jpg"/>
+			Når kan du ikke parkere her ifølge dette parkeringsskiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            På.
+        </alternative>
+        <alternative>
+            70 km/t.
+        </alternative>
+        <alternative>
+            90 km/t.
+        </alternative>
+    </question>
+	
+	 <question>
+        <formulation>
+		<ImageView
+			<android:imageResId="@drawable/vikeplikt.jpg"/>
+			Hvem har vikeplikt ifølge dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            Møtende trafikk har vikeplikt.
+        </alternative>
+        <alternative>
+            Du har vikeplikt.
+        </alternative>
+        <alternative>
+            Begge har vikeplikt.
+        </alternative>
+    </question>
+
+		    <question>
+        <formulation>
+		<ImageView
+			<android:imageResId="@drawable/503motortrafikkvei.jpg"/>
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative >
+            Landevei.
+        </alternative>
+        <alternative isCorrect="true">
+            Motortrafikkvei.
+        </alternative>
+        <alternative>
+            Motorvei.
+        </alternative>
+    </question>
+	
+		    <question>
+        <formulation>
+			Hvilket av disse skiltene er et fareskilt?
+        </formulation>
+        <alternative >
+            <android:imageResId="@drawable/210forkjorsvei.jpg"/>
+        </alternative>
+        <alternative>
+            <android:imageResId="@drawable/202vikeplikt.jpg"/>
+        </alternative>
+        <alternative isCorrect="true">
+            <android:imageResId="@drawable/150fly.jpg"/>
+        </alternative>
+    </question>
+	
+		    <question>
+        <formulation>
+		<ImageView
+			<android:imageResId="@drawable/509sambruksfelt.jpg"/>
+			Hvilke kjøretøy kan benytte et felt som viser dette skiltet?
+        </formulation>
+        <alternative >
+            Kollektivtransport.
+        </alternative>
+        <alternative>
+            Perosnbiler med 2+ personer.
+        </alternative>
+        <alternative isCorrect="true">
+            Drosje, buss, motorvogn med minst 2 personer.
+        </alternative>
+    </question>
+	
+		    <question>
+        <formulation>
+		<ImageView
+			<android:imageResId="@drawable/526envei.jpg"/>
+			Hva betyr dette skiltet
+        </formulation>
+        <alternative >
+            Farlig sving.
+        </alternative>
+        <alternative>
+            Påbudtkjørefelt.
+        </alternative>
+        <alternative isCorrect="true">
+            Enveiskjøring.
+        </alternative>
+    </question>
 	</category>
 	
 	<category field="generelt">
