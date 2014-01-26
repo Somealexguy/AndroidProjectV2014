@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BilTeori</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="book">bok</string>
+    <string name="setings">Innstillinger</string>
+    <string name="statistics">Statistikk</string>
+    <string name="examOne">Eksamen1</string>
+    <string name="examTwo">Eksamen2</string>
+    <string name="takePicture">Ta bilde til sertifikatet!</string>
+    <string name="getDirections">Vis vei til trafikkskole</string>
+    <string name="title_activity_book">BookActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_exam_one">Exam_one</string>
+    <string name="title_activity_exam_two">Exam_two</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_statistics">Statistics</string>
+    <string name="title_activity_take_picture">Take_picture</string>
+    <string name="title_activity_map">Map</string>
+
+</resources>
