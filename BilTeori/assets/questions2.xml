@@ -1,0 +1,19 @@
+<traffic>
+    <category field="bilen">
+        <question>
+            <formulation>
+                Hvordan finner man størst tillatte totalvekt på tilhenger bilen kan ha?
+            </formulation>
+            <alternative isCorrect="true">
+                Se i vognkortet.
+            </alternative>
+            <alternative>
+                 Spør en du kjenner.
+            </alternative>
+            <alternative>
+                Du regner det ut ved lengde på bilen gange høyde gange vekten og summen av dette delt på antall hestekrefter(hk).
+            </alternative>
+        </question>
+	</category>
+		
+</traffic>

@@ -18,6 +18,12 @@ public class MainActivity extends Activity {
 		setUpButtons();
 	}
 	
+	public void bookClick(View view) {
+		Intent intent = new Intent(com.nicklase.bilteori.MainActivity.this,com.nicklase.bilteori.BookActivity.class);
+   	 	startActivity(intent);
+	}
+	
+	
 	public void setUpButtons(){
 		final Button buttonBook = (Button) findViewById(R.id.btn_book);
 		 buttonBook.setOnClickListener(new View.OnClickListener() {
@@ -31,7 +37,7 @@ public class MainActivity extends Activity {
 		 buttonExam.setOnClickListener(new View.OnClickListener() {
 	         public void onClick(View v) {
 	             // Perform action on click
-	        	 Intent intent = new Intent(com.nicklase.bilteori.MainActivity.this, com.nicklase.bilteori.Exam_one.class);
+	        	 Intent intent = new Intent(com.nicklase.bilteori.MainActivity.this, com.nicklase.bilteori.ExamOne.class);
 	        	 startActivity(intent);
 	         }
 	     });
@@ -39,7 +45,7 @@ public class MainActivity extends Activity {
 		 buttonExamTwo.setOnClickListener(new View.OnClickListener() {
 	         public void onClick(View v) {
 	             // Perform action on click
-	        	 Intent intent = new Intent(com.nicklase.bilteori.MainActivity.this, com.nicklase.bilteori.Exam_two.class);
+	        	 Intent intent = new Intent(com.nicklase.bilteori.MainActivity.this, com.nicklase.bilteori.ExamTwo.class);
 	        	 startActivity(intent);
 	         }
 	     });
@@ -63,7 +69,7 @@ public class MainActivity extends Activity {
 		 buttonPicture.setOnClickListener(new View.OnClickListener() {
 	         public void onClick(View v) {
 	             // Perform action on click
-	        	 Intent intent = new Intent(com.nicklase.bilteori.MainActivity.this, com.nicklase.bilteori.Take_picture.class);
+	        	 Intent intent = new Intent(com.nicklase.bilteori.MainActivity.this, com.nicklase.bilteori.TakePicture.class);
 	        	 startActivity(intent);
 	         }
 	     });
