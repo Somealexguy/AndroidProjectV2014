@@ -5,7 +5,7 @@ import java.util.List;
 public class Question{
     private  String catName;
     private  String formulation;
-    private  List alternatives;
+    private  List <String> alternatives;
     private String rightAnswer;
 
     public Question(String catName, String formulation, List alternatives, String rightAnswer) {
@@ -23,7 +23,7 @@ public class Question{
 		return formulation;
 	}
 
-	public  List getAlternatives() {
+	public  List<String> getAlternatives() {
 		return alternatives;
 	}
 

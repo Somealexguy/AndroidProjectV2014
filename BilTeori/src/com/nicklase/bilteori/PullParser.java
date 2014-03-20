@@ -45,7 +45,7 @@ public class PullParser {
             String name = parser.getName();
           //  Log.w("myApp","navnet til parser:"+name);
             // Starts by looking for the entry tag
-            questions = readQuestion(parser);
+            questions.addAll(readQuestion(parser));
         }  
         return questions;
     }
@@ -98,43 +98,5 @@ public class PullParser {
         return new Question(catName, formulation, alternatives,rightAnswer);
     }
 
-    // Processes title tags in the feed.
-    private String readAlternative(XmlPullParser parser) throws IOException, XmlPullParserException {
-       // parser.require(XmlPullParser.START_TAG, ns, "alternative");
-        String alternative = readText(parser);
-       
-            
-        parser.nextTag();
-        return alternative;
-    }
-      
-    // Processes link tags in the feed.
-    private String readFormulation(XmlPullParser parser) throws IOException, XmlPullParserException {
-        String formulation = "";
-        //parser.require(XmlPullParser.START_TAG, ns, "formulation");
-        String tag = parser.getName();
-        if (tag.equals("formulation")) {
-                formulation = readText(parser);
-               // parser.nextTag();
-        }
-     //   parser.require(XmlPullParser.END_TAG, ns, "formulation");
-        return formulation;
-    }
-
-
-    // For the tags title and summary, extracts their text values.
-    private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
-        String result = "";
-        if (parser.next() == XmlPullParser.TEXT) {
-            result = parser.getText().trim();
-           // parser.nextTag();
-        }
-        return result;
-    }
-    
-    //hopper over de taggene vi ikke trenger.
-
-        
-     
 
 }

@@ -33,6 +33,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.nicklase.bilteori.ResultActivity"
+              android:label="@string/title_activity_exam_one" 
+              >
+          	
+        </activity>
+        <activity
             android:name="com.nicklase.bilteori.BookActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_book"

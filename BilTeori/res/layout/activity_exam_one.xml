@@ -82,7 +82,9 @@
                 android:id="@+id/textViewFormulation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFF" />
+                android:textColor="#FFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
@@ -102,30 +104,6 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:keepScreenOn="true" >
-
-                    <RadioButton
-                        android:id="@+id/theMatrix"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-
-                    <RadioButton
-                        android:id="@+id/theAvengers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-
-                    <RadioButton
-                        android:id="@+id/theHobbit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-
-                    <RadioButton
-                        android:id="@+id/intoTheWild"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
                 </RadioGroup>
             </TableRow>
 
@@ -135,12 +113,6 @@
             android:id="@+id/tableRow6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
-
-            <ToggleButton
-                android:id="@+id/toggleButton1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton" />
 
         </TableRow>
 
@@ -156,12 +128,6 @@
                 android:layout_weight="1"
                 />
 
-            <Button
-                android:id="@+id/btnNext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
         </TableRow>
 
         <TableRow
@@ -169,7 +135,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
         </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textPoeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/question_count" />
+
+        </TableRow>
+
+        <TextView
+            android:id="@+id/textViewQuestionCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/checkAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/btnCommit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_commit" />
 
     </TableLayout>
 

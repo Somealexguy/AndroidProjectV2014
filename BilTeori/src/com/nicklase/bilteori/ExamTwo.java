@@ -1,7 +1,5 @@
 package com.nicklase.bilteori;
 
-import com.nicklase.bilteori.util.SystemUiHider;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
@@ -10,13 +8,15 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.nicklase.bilteori.util.SystemUiHider;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  * 
  * @see SystemUiHider
  */
-public class ExamTwo extends Activity {
+public class ExamTwo extends Activity implements IExam{
 	/**
 	 * Whether or not the system UI should be auto-hidden after
 	 * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -159,4 +159,49 @@ public class ExamTwo extends Activity {
 		mHideHandler.removeCallbacks(mHideRunnable);
 		mHideHandler.postDelayed(mHideRunnable, delayMillis);
 	}
+
+	@Override
+	public void setUpButtons() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createRadioButton() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeRadioButton() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateProgress() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void randomizeQuestions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setQuestion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getQuestionList() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
 }
