@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -44,7 +45,7 @@ public class ExamOne extends Activity implements IExam {
 	 private static List<Question> questions = new ArrayList<Question>();
 	 //bruker hash table isteden for array for å vise at vi kan bruke det.
 	 //søking i en hashtable gjøres også i konstant tid.
-	 Hashtable<Integer,String> userAnswers = new Hashtable<Integer, String>();
+	private  Hashtable<Integer,String> userAnswers = new Hashtable<Integer, String>();
 	 private static int questionIndex=0;
 	/**
 	 * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
@@ -193,49 +194,55 @@ public class ExamOne extends Activity implements IExam {
     /// Makes a new exam.
     /// </summary>
 	private void newExam(){
-		userAnswers.clear();
-		questions.clear();
-		questionIndex=0;
 		randomizeQuestions();
 		getQuestionList();
 		randomizeAlternatives();
 		setUpButtons();
 		setQuestion();
 		createRadioButton(); 
+		setTimer(1);
 	}
 	/// <summary>
     /// sets up the buttons
     /// </summary>
 	
 	public void setUpButtons(){
-		Button btnPrev=(Button) findViewById(R.id.btnPrev);
-		Button btnNext=(Button) findViewById(R.id.btnNext);
+		final Button btnPrev=(Button) findViewById(R.id.btnPrev);
+		final Button btnNext=(Button) findViewById(R.id.btnNext);
 		Button btnCommit=(Button) findViewById(R.id.btnCommit);
 		btnPrev.setText("Prev");
 		btnNext.setText("Next");
-		
+		btnPrev.setVisibility(View.INVISIBLE);
 		updateProgress();
 		
 		btnPrev.setOnClickListener(new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
-				if(questionIndex>0){
+				if(questionIndex>1){
 					registerUserAnswer();
 					questionIndex--;
 					setQuestion();
 					createRadioButton();
 					updateProgress();
+				}else if(questionIndex==1){
+					btnPrev.setVisibility(View.INVISIBLE);
+					questionIndex--;
+					registerUserAnswer();
+					setQuestion();
+					createRadioButton();
+					updateProgress();
 					
 				}
+				btnNext.setVisibility(View.VISIBLE);
 			}
 		}); 
 		btnCommit.setOnClickListener(new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
-				sendResult();
-//				updateProgress();
+				deliverResult();
+
 			}
 		}); 
 		
@@ -246,17 +253,22 @@ public class ExamOne extends Activity implements IExam {
 
 			@Override
 			public void onClick(View v) {
-				if(questionIndex<questions.size()-1){
+				if(questionIndex<questions.size()-2){
 						registerUserAnswer();
 						questionIndex++;
 						setQuestion();
 						createRadioButton();
 						updateProgress();
-						
-					}else{
+					}else if(questionIndex==questions.size()-2){
+						btnNext.setVisibility(View.INVISIBLE);
 						registerUserAnswer();
-						sendResult();
+						questionIndex++;
+						setQuestion();
+						createRadioButton();
+						updateProgress();
 					}
+				
+				btnPrev.setVisibility(View.VISIBLE);
 			}
 		});
 		
@@ -395,7 +407,9 @@ public class ExamOne extends Activity implements IExam {
 	/// <summary>
     /// Sends the result to ResultActivity.
     /// </summary>
-	public void sendResult(){
+	public void deliverResult(){
+		registerUserAnswer();
+		setTimer(0);
 		Intent intent = new Intent(ExamOne.this, com.nicklase.bilteori.ResultActivity.class);
 		String[][] arrays = convertResultToArray();
 		
@@ -406,6 +420,7 @@ public class ExamOne extends Activity implements IExam {
 		
          intent.putExtras(bundle);
          startActivity(intent);
+         finish();
 
 }
 	/// <summary>
@@ -429,4 +444,63 @@ public class ExamOne extends Activity implements IExam {
 		
 		return result;
 	}
+	/// <summary>
+    /// A method that makes a new timer from examTimer class
+    /// </summary>
+private void setTimer(int s){
+	long minutesUntilFinished=120;
+	long secondsUntilFinished=minutesUntilFinished*60;
+	long millisUntilFinished=secondsUntilFinished*1000;
+	
+	examTimer timer = new examTimer(millisUntilFinished,1000);
+	if(s==1){
+		timer.start();
+	}
+	else{
+		timer.cancel();
+	}
+		
+}
+
+/// <summary>
+/// A inner class which extends CountDownTimer
+/// </summary>
+	public class examTimer extends CountDownTimer {
+        private TextView timeLeft = (TextView) findViewById(id.textCountdownTime);
+		public examTimer(long millisInFuture, long countDownInterval) {
+        	
+            super(millisInFuture, countDownInterval);
+            // TODO Auto-generated constructor stub
+        }
+
+        @Override
+        public void onFinish() {
+            // TODO Auto-generated method stub
+        	deliverResult();
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            // TODO Auto-generated method stub
+        	double secondsUntilFinished = (millisUntilFinished/1000);
+        	
+        	double minutsUntilFinished = (secondsUntilFinished/60);
+        	
+        	
+        	timeLeft.setText("Tid igjen: " + (int) minutsUntilFinished + " minutter " + (int) secondsUntilFinished  + " sekunder");
+        }
+        
+
+    };
+    @Override
+    public void finish() {
+    	// TODO Auto-generated method stub
+    	super.finish();
+    	Log.w("myApp", "Du lukket eksamen.");
+    	setTimer(0);
+    	userAnswers.clear();
+		questions.clear();
+		questionIndex=0;
+    }
+   
 }

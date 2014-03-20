@@ -22,5 +22,6 @@
     <string name="title_activity_map">Map</string>
     <string name="question_count">Du er nå på spørsmål:</string>
      <string name="btn_commit">Lever test</string>
+     <string name="timeText">Tid igjen:</string>
 	
 </resources>
