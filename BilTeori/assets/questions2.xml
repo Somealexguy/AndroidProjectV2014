@@ -1,5 +1,22 @@
+
 <traffic>
     <category field="bilen">
+   <question>
+		<formulation  isImage="@drawable/overgang.png" >
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+    </category>
+	  <category field="bilen">
         <question>
             <formulation>
                 Hvordan finner man størst tillatte totalvekt på tilhenger bilen kan ha?
@@ -14,6 +31,315 @@
                 Du regner det ut ved lengde på bilen gange høyde gange vekten og summen av dette delt på antall hestekrefter(hk).
             </alternative>
         </question>
-	</category>
-		
-</traffic>
+		<question>
+            <formulation>
+				Hvor mange lykter/fjernlys kan du ha på personbilen?
+            </formulation>
+            <alternative>
+                Personbiler skal ha maks to lykter som gir hvitt eller gult fjernlys.
+            </alternative>
+            <alternative>
+                Personbiler skal ha maks to lykter som gir hvitt fjernlys.
+            </alternative>
+            <alternative>
+				Personbiler skal ha minst 1 lykt som virker som gir hvitt eller gult fjernlyst.
+            </alternative>
+            <alternative isCorrect="true">
+                Personbiler skal ha to eller fire lykter som gir hvitt eller gult fjernlys.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Når er det ikke tillatt å kjøre med piggdekk i Østfold?
+            </formulation>
+            <alternative>
+                Når all snøen er smeltet.
+            </alternative>
+            <alternative>
+                Når det er 10 grader ute.
+            </alternative>
+            <alternative>
+				Fra og med 1. mars til og med 1. desember.
+            </alternative>
+            <alternative isCorrect="true">
+                Fra og med mandag etter 2.påskedag til og med 31.oktober.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva er minimum mønsterdybde for sommerdekk?
+            </formulation>
+            <alternative>
+                1 cm.
+            </alternative>
+            <alternative>
+                2,5 mm.
+            </alternative>
+            <alternative>
+				1,9 mm for alle type kjøretøy.
+            </alternative>
+            <alternative isCorrect="true">
+                1,6 mm for personbiler.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hva er riktig i forhold til firehjulstrekk og drivstofforbruk?
+            </formulation>
+            <alternative>
+                Firehjulstrekk har ingen innvirkning på drivstoff forbruket.
+            </alternative>
+            <alternative>
+                Firehjulstrekk minsker drivstoff forbruket.
+            </alternative>
+            <alternative>
+				Firehjulstrekk er nødvendig i alle biler.
+            </alternative>
+            <alternative isCorrect="true">
+                Firehjulstrekk øker drivstoff forbruket.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hvordan betegnes dødgang på ratt?
+            </formulation>
+            <alternative>
+                Dødgang er bremsesvikt.
+            </alternative>
+            <alternative>
+                Det er det samme som servostyring.
+            </alternative>
+            <alternative>
+				Det er hvor stor kraft det tar å svinge på rattet.
+            </alternative>
+            <alternative isCorrect="true">
+                Det betegnes på hvor mye du kan svinge på rattet uten at  hjulene beveger seg.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hva er maks dødgang du kan ha på ratt?
+            </formulation>
+            <alternative>
+                10 cm.
+            </alternative>
+            <alternative>
+                Det skal ikke være noe dødgang på ratt.
+            </alternative>
+            <alternative>
+				10 meter.
+            </alternative>
+            <alternative isCorrect="true">
+                2-3 cm.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hva er riktig i forhold til firehjulstrekk og drivstofforbruk?
+            </formulation>
+            <alternative>
+                Firehjulstrekk har ingen innvirkning på drivstoff forbruket.
+            </alternative>
+            <alternative>
+                Firehjulstrekk minsker drivstoff forbruket.
+            </alternative>
+            <alternative>
+				Firehjulstrekk er nødvendig i alle biler.
+            </alternative>
+            <alternative isCorrect="true">
+                Firehjulstrekk øker drivstoff forbruket.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hvordan skal bremsene virke?
+            </formulation>
+            <alternative>
+                Hjulene låses under bremsing.
+            </alternative>
+            <alternative>
+                De skal virke kraftigst på bakhjulene.
+            </alternative>
+            <alternative>
+				De skal virke like kraftige på alle hjul.
+            </alternative>
+            <alternative isCorrect="true">
+                De skal virke kraftigst på framhjulene.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+                Hva kan være grunnen for at kontrollampen lyser og motortemperaturen øker?
+            </formulation>
+            <alternative>
+                Batteriet er overladet.
+            </alternative>
+            <alternative>
+                Det er ikke nok luft i hjulene.
+            </alternative>
+            <alternative>
+				En sikring til dynamoen er defekt.
+            </alternative>
+            <alternative isCorrect="true">
+                Drivrem til dynamo og vannpumpe er defekt.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilke konsekvenser kan det få å kjøre med for tung tilhenger
+            </formulation>
+            <alternative isCorrect="true">
+                 Lenger  bremselengde, dårligere stabilitet, bilen går saktere og dårligere veigrep foran.
+            </alternative>
+            <alternative>
+                Føreren får dårlig sikt.
+            </alternative>
+            <alternative>
+                Bilen overstyrer når du svinger.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilke ulemper kan du oppleve dersom du har for tung last i bilen?
+            </formulation>
+            <alternative isCorrect="true">
+                Dårligere kjøreegenskaper, lengre bremselengde og at bilen bruker mer drivstoff.
+            </alternative>
+            <alternative>
+                At bilen ikke vil starte.
+            </alternative>
+            <alternative>
+                Du vil oppleve at bilen blir tregere.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilken konsekvenser kan det få å kjøre med tilhenger med for stor tillatt totalvekt?
+            </formulation>
+            <alternative isCorrect="true">
+                    Lenger bremselengde, overstyring, ulovlig og mer utslipp av CO2.
+            </alternative>
+            <alternative>
+                Bilen vil kunne kjøre som normalt.
+            </alternative>
+            <alternative>
+                Dekken blir fortere slitt og du må bytte dekk oftere.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilke skader er mest vanlig på felg og dekk?
+            </formulation>
+            <alternative isCorrect="true">
+                    Rifter i dekket, sår på dekksidene, bulk i felgkant.
+            </alternative>
+            <alternative>
+                Spisse gjenstander som har satt seg fast i dekket.
+            </alternative>
+            <alternative>
+                Slitt gummi pågrunn av for mye burning.
+            </alternative>
+        </question>
+        <question>
+                <formulation>
+                    Hvis dekkene er mest slitte på midten, hva kan dette fortelle deg?
+                </formulation>
+                <alternative isCorrect="true">
+                        At du har kjørt med for mye luft i dekkene.
+                </alternative>
+                <alternative>
+                    At du kjører med feil type dekk.
+                </alternative>
+                <alternative>
+                    At dekkene er for store.
+                </alternative>
+        </question>
+        <question>
+            <formulation>
+                Feil lufttrykk i dekket kan gi hvilke følger?
+            </formulation>
+            <alternative isCorrect="true">
+                Feil lufttrykk kan påvirke bl.a. kjøreegenskaper, drivstofforbruk, og dekkenes livslengde.
+            </alternative>
+            <alternative>
+                At dekket eksploderer hvis du kjører over 100 km/t.
+            </alternative>
+            <alternative>
+                Feil lufttrykk kan påvirke bremselengden og bremsetiden.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Feil lufttrykk i dekket kan gi hvilke følger?
+            </formulation>
+            <alternative isCorrect="true">
+                Feil lufttrykk kan påvirke bl.a. kjøreegenskaper, drivstofforbruk, og dekkenes livslengde.
+            </alternative>
+            <alternative>
+                At dekket eksploderer hvis du kjører over 100 km/t.
+            </alternative>
+            <alternative>
+                Feil lufttrykk kan påvirke bremselengden og bremsetiden.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilke ulemper er det ved å kjøre med for liten mønsterdybde?
+            </formulation>
+            <alternative isCorrect="true">
+                Det gir dårligere veggrep og  letter at det oppstår vannplaning.
+            </alternative>
+            <alternative>
+                Det blir vanskligere å holde seg på veien når man svinger.
+            </alternative>
+            <alternative>
+                Det vil føre til at du kan spole lettere og bremsetiden vil bli lenger.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Er det forsvarlig å kjøre når bremselysene ikke virker?
+            </formulation>
+            <alternative isCorrect="true">
+                Nei, du må sjekke sikringen eller bytte pære.
+            </alternative>
+            <alternative>
+                Det er lov  på landvei.
+            </alternative>
+            <alternative>
+                Det er lov så lenge du ikke skal bremse.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvordan finner du riktig dekkdimensjon?
+            </formulation>
+            <alternative isCorrect="true">
+                Ser i vognkortet.
+            </alternative>
+            <alternative>
+                Spør dekkforhandleren.
+            </alternative>
+            <alternative>
+                Det står på dekket.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Er det lov å kjøre med en varselslampe som lyser rødt i displayet til bilen?
+            </formulation>
+            <alternative isCorrect="true">
+                Nei, det er ikke lov.
+            </alternative>
+            <alternative>
+                Det er lov å kjøre frem til første kontroll, så blir du henvist til et verksted som kan hjelpe deg.
+            </alternative>
+            <alternative>
+                Det er ikke lov, men det er ikke farlig så det er bare å kjøre.
+            </alternative>
+        </question>
+    </category>
+	
+	</traffic>
+
+

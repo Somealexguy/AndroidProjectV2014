@@ -15,6 +15,159 @@
                 Du regner det ut ved lengde på bilen gange høyde gange vekten og summen av dette delt på antall hestekrefter(hk).
             </alternative>
         </question>
+		<question>
+            <formulation>
+				Hvor mange lykter/fjernlys kan du ha på personbilen?
+            </formulation>
+            <alternative>
+                Personbiler skal ha maks to lykter som gir hvitt eller gult fjernlys.
+            </alternative>
+            <alternative>
+                Personbiler skal ha maks to lykter som gir hvitt fjernlys.
+            </alternative>
+            <alternative>
+				Personbiler skal ha minst 1 lykt som virker som gir hvitt eller gult fjernlyst.
+            </alternative>
+            <alternative isCorrect="true">
+                Personbiler skal ha to eller fire lykter som gir hvitt eller gult fjernlys.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Når er det ikke tillatt å kjøre med piggdekk i Østfold?
+            </formulation>
+            <alternative>
+                Når all snøen er smeltet.
+            </alternative>
+            <alternative>
+                Når det er 10 grader ute.
+            </alternative>
+            <alternative>
+				Fra og med 1. mars til og med 1. desember.
+            </alternative>
+            <alternative isCorrect="true">
+                Fra og med mandag etter 2.påskedag til og med 31.oktober.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva er minimum mønsterdybde for sommerdekk?
+            </formulation>
+            <alternative>
+                1 cm.
+            </alternative>
+            <alternative>
+                2,5 mm.
+            </alternative>
+            <alternative>
+				1,9 mm for alle type kjøretøy.
+            </alternative>
+            <alternative isCorrect="true">
+                1,6 mm for personbiler.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hva er riktig i forhold til firehjulstrekk og drivstofforbruk?
+            </formulation>
+            <alternative>
+                Firehjulstrekk har ingen innvirkning på drivstoff forbruket.
+            </alternative>
+            <alternative>
+                Firehjulstrekk minsker drivstoff forbruket.
+            </alternative>
+            <alternative>
+				Firehjulstrekk er nødvendig i alle biler.
+            </alternative>
+            <alternative isCorrect="true">
+                Firehjulstrekk øker drivstoff forbruket.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hvordan betegnes dødgang på ratt?
+            </formulation>
+            <alternative>
+                Dødgang er bremsesvikt.
+            </alternative>
+            <alternative>
+                Det er det samme som servostyring.
+            </alternative>
+            <alternative>
+				Det er hvor stor kraft det tar å svinge på rattet.
+            </alternative>
+            <alternative isCorrect="true">
+                Det betegnes på hvor mye du kan svinge på rattet uten at  hjulene beveger seg.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hva er maks dødgang du kan ha på ratt?
+            </formulation>
+            <alternative>
+                10 cm.
+            </alternative>
+            <alternative>
+                Det skal ikke være noe dødgang på ratt.
+            </alternative>
+            <alternative>
+				10 meter.
+            </alternative>
+            <alternative isCorrect="true">
+                2-3 cm.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hva er riktig i forhold til firehjulstrekk og drivstofforbruk?
+            </formulation>
+            <alternative>
+                Firehjulstrekk har ingen innvirkning på drivstoff forbruket.
+            </alternative>
+            <alternative>
+                Firehjulstrekk minsker drivstoff forbruket.
+            </alternative>
+            <alternative>
+				Firehjulstrekk er nødvendig i alle biler.
+            </alternative>
+            <alternative isCorrect="true">
+                Firehjulstrekk øker drivstoff forbruket.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hvordan skal bremsene virke?
+            </formulation>
+            <alternative>
+                Hjulene låses under bremsing.
+            </alternative>
+            <alternative>
+                De skal virke kraftigst på bakhjulene.
+            </alternative>
+            <alternative>
+				De skal virke like kraftige på alle hjul.
+            </alternative>
+            <alternative isCorrect="true">
+                De skal virke kraftigst på framhjulene.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+                Hva kan være grunnen for at kontrollampen lyser og motortemperaturen øker?
+            </formulation>
+            <alternative>
+                Batteriet er overladet.
+            </alternative>
+            <alternative>
+                Det er ikke nok luft i hjulene.
+            </alternative>
+            <alternative>
+				En sikring til dynamoen er defekt.
+            </alternative>
+            <alternative isCorrect="true">
+                Drivrem til dynamo og vannpumpe er defekt.
+            </alternative>
+        </question>
         <question>
             <formulation>
                 Hvilke konsekvenser kan det få å kjøre med for tung tilhenger
@@ -172,7 +325,7 @@
     </category>
     <category field="skilt">
 	<question>
-        <formulation> 
+		<formulation  isImage="@drawable/overgang.png" >
 			Hva betyr dette skiltet?
         </formulation>
         <alternative isCorrect="true">
@@ -185,9 +338,8 @@
             FARLIGE SVINGER
         </alternative>
     </question>
-    
-	    <question>
-        <formulation>
+	<!--- <question>
+        <formulation isImage="@drawable/gatetun.jpg">
 			Hva er høyeste tillatte fart etter at du har passert dette skiltet?
         </formulation>
         <alternative >
@@ -202,7 +354,7 @@
     </question>
 	
 	    <question>
-        <formulation>
+        <formulation isImage="@drawable/531feltfart.jpg">
 			Du er på vei inn på motorvei. Hva betyr dette skiltet?
         </formulation>
         <alternative isCorrect="true">
@@ -217,7 +369,7 @@
     </question>
 	
 	    <question>
-        <formulation>
+        <formulation isImage="@drawable/slash60.jpg">
 			Du kjører på landevei. Hva er maks hastighet når du passerer dette skiltet?
         </formulation>
         <alternative isCorrect="true">
@@ -232,7 +384,7 @@
     </question>
 	
 	 <question>
-        <formulation>
+        <formulation isImage="@drawable/parkeringssone.jpg">
 			Når kan du ikke parkere her ifølge dette parkeringsskiltet?
         </formulation>
         <alternative isCorrect="true">
@@ -247,7 +399,7 @@
     </question>
 	
 	 <question>
-        <formulation>
+        <formulation isImage="@drawable/vikeplikt.jpg">
 			Hvem har vikeplikt ifølge dette skiltet?
         </formulation>
         <alternative isCorrect="true">
@@ -261,8 +413,8 @@
         </alternative>
     </question>
 
-		    <question>
-        <formulation>
+	<question>
+        <formulation isImage="@drawable/503motortrafikkvei.jpg">
 			Hva betyr dette skiltet?
         </formulation>
         <alternative >
@@ -275,16 +427,19 @@
             Motorvei.
         </alternative>
     </question>
-	
-		    <question>
+	-->
+	<question>
         <formulation>
 			Hvilket av disse skiltene er et fareskilt?
         </formulation>
         <alternative >
+   
         </alternative>
         <alternative>
+   
         </alternative>
         <alternative isCorrect="true">
+            
         </alternative>
     </question>
 	
@@ -332,6 +487,125 @@
             </alternative>
             <alternative isCorrect="true">
                 Ja.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva er den vanligste grunn til utforkjøring i sving?
+            </formulation>
+            <alternative>
+                Doseringen på svingen er feil.
+            </alternative>
+            <alternative>
+                Dårlig reaksjonstid.
+            </alternative>
+            <alternative>
+				Dårlige dekk.
+            </alternative>
+            <alternative isCorrect="true">
+                Feilvurdering av fart.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hvordan er myndighetspyramiden regulert?
+            </formulation>
+            <alternative>
+                Først tegn fra politi, lysregulering, trafikkreglene, så trafikkskilt og veioppmerkning.
+            </alternative>
+            <alternative>
+                Først trafikkreglene, trafikkskilt og veioppmerkning, tegn fra politi, så lysregulering.
+            </alternative>
+            <alternative>
+				Først trafikkskilt og veioppmerkning, tegn fra politi, lysregulering, så trafikkreglene.
+            </alternative>
+            <alternative isCorrect="true">
+                Først tegn fra politi, lysregulering, trafikkskilt og veioppmerkning, så trafikkreglene.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hvilken av alternativene er korrekt angående bil og miljø?
+            </formulation>
+            <alternative>
+                MAn skal kjøre med så lavt gir som mulig.
+            </alternative>
+            <alternative>
+                Bensin er mer miljøvennlig enn disel.
+            </alternative>
+            <alternative>
+				Bilmotoren utgir ingen farlige stoffer.
+            </alternative>
+            <alternative isCorrect="true">
+                Katalysatoren bryter ned farlige gasser fra motoren.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Du vil trekke tilhenger med bilen. Hvor mye kan tilhengeren lovlig veie?
+            </formulation>
+            <alternative>
+                Tilhenger med last kan veie dobbelt så mye som bilens egenvekt.
+            </alternative>
+            <alternative>
+                Tilhenger med last kan veie halvparten av bilens totalvekt.
+            </alternative>
+            <alternative>
+				Det finnes ingen vektgrense for tilhenger.
+            </alternative>
+            <alternative isCorrect="true">
+                Maksimal tilhengervekt er oppgitt i bilens vognkort.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hvor hurtig bør innblåsing foretas ved bruk av munn til munn metode?
+            </formulation>
+            <alternative>
+                En gang pr. minutt.
+            </alternative>
+            <alternative>
+                200 ganger pr. minutt.
+            </alternative>
+            <alternative>
+				10 ganger pr. minutt.
+            </alternative>
+            <alternative isCorrect="true">
+                Som ved normal pust.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               I hvilke ulykker blir flest unge førere drept?
+            </formulation>
+            <alternative>
+                Kollisjon på motorvei.
+            </alternative>
+            <alternative>
+                Møteulykke.
+            </alternative>
+            <alternative>
+				Ulykker på parkering.
+            </alternative>
+            <alternative isCorrect="true">
+                Utforkjøring på landeveg.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Du sitter på med en sjåfør som du opplever kjører fortere enn det du ønsker. Hva bør du gjøre?
+            </formulation>
+            <alternative>
+                Ingenting.
+            </alternative>
+            <alternative>
+                Hoppe ut av bilen.
+            </alternative>
+            <alternative>
+				Anmelde føreren til politiet.
+            </alternative>
+            <alternative isCorrect="true">
+                Be om at farten reduseres umiddelbart.
             </alternative>
         </question>
         <question>
@@ -408,6 +682,177 @@
             </alternative>
             <alternative>
                 Vegtrafikkloven slår fast at det er føreren og eier av kjøretøyet som har delt ansvar.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hvem har hovedansvaret under øvelseskjøring?
+            </formulation>
+            <alternative>
+                Eieren av bilen.
+            </alternative>
+            <alternative>
+                Den som øvelseskjører hvis han/hun er fylt 18.
+            </alternative>
+            <alternative>
+				Ledsageren og den som øvelseskjører.
+            </alternative>
+            <alternative isCorrect="true">
+                Ledsageren.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Du kjører bak et vogntog som blinker til høyre. Hva bør du gjøre?
+            </formulation>
+            <alternative>
+                Kjøre forbi vogntoget.
+            </alternative>
+            <alternative>
+                Vogntoget gir tegn til deg for at du skal kjøre forbi.
+            </alternative>
+            <alternative>
+				Vogntoget gir tegn til deg for at du skal følge etter.
+            </alternative>
+            <alternative isCorrect="true">
+                Vogntoget skal mest sannsynlig til høyre i neste kryss og jeg holder meg derfor bak.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hvor stor luke trenger man for å krysse en forkjørsvei der fartgrensen er 80 km/t?
+            </formulation>
+            <alternative>
+                Ca. 600 meter.
+            </alternative>
+            <alternative>
+                Ca. 100 meter.
+            </alternative>
+            <alternative>
+				Ca. 400 meter.
+            </alternative>
+            <alternative isCorrect="true">
+                Ca. 150 meter.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva vil du gjøre med en bevisstløs person??
+            </formulation>
+            <alternative>
+                Holde personen mest mulig varm og med hodet høyt.
+            </alternative>
+            <alternative>
+                Holde personen mest mulig kald og med hodet høyt.
+            </alternative>
+            <alternative>
+				Legge personen på magen og masserer ryggen.
+            </alternative>
+            <alternative isCorrect="true">
+                Legge personen i stabilt sideleie og holde vedkommende varm.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Når vil du oppdage en fotgjenger uten refleks på en mørklagt vei med nærlys?
+            </formulation>
+            <alternative>
+                Ca. 300-500 meter.
+            </alternative>
+            <alternative>
+                Ca. 50-100 meter.
+            </alternative>
+            <alternative>
+				Ca. 100-200 meter.
+            </alternative>
+            <alternative isCorrect="true">
+                Ca. 10-50 meter.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Du kjører i ca. 50 km/t og lyssignalet skifter til gult lys. Det er 10 meter frem til krysset. Hva bør du gjøre?
+            </formulation>
+            <alternative>
+                Kjør videre mens du bruker hornet for å gi tegn til andre trafikanter.
+            </alternative>
+            <alternative>
+                Øke hastigheten.
+            </alternative>
+            <alternative>
+				Stanse.
+            </alternative>
+            <alternative isCorrect="true">
+                Fortsette kjøringen.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hvilken av alternativene er korrekt innen kategorien alkohol og bilkjøring?
+            </formulation>
+            <alternative>
+                Ved promillekjøring blir førerkortert inndratt i minst 3 år.
+            </alternative>
+            <alternative>
+                En bilfører er påvirket av alkohol og kan bli straffet dersom personen har alkohol i blodet.
+            </alternative>
+            <alternative>
+				Dersom bilførerens alkoholkonsentrasjon i blodet er på 0,3 kan bilføreren ikke bli straffet.
+            </alternative>
+            <alternative isCorrect="true">
+                Ved over 0,2 promille regnes du alltid som påvirket.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hvilket av alternativene er riktig innenfor barnesikring i bil?
+            </formulation>
+            <alternative>
+                Barn under 135 cm skal sitte på fanget til en passasjer med belte.
+            </alternative>
+            <alternative>
+                Det er ikke lov å kjøre med spedbarn i bilen.
+            </alternative>
+            <alternative>
+				Barn under 135 cm skal sitte i en barnesete rettet i motsatt retning på passasjersetet foran.
+            </alternative>
+            <alternative isCorrect="true">
+                Barn under 135 cm høyde skal alltid bruke godkjent barnesikringsutstyr som er riktig i forhold til barnet, 
+				mens barn med høyde 135-150 cm skal bruke slikt utstyr dersom det er tilgjengelig i bilen.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hvor skal varseltrekanten plasseres?
+            </formulation>
+            <alternative>
+                Ved siden av bilen.
+            </alternative>
+            <alternative>
+                På taket av bilen
+            </alternative>
+            <alternative>
+				10 meter fra bilen.
+            </alternative>
+            <alternative isCorrect="true">
+                150-200 meter fra bilen.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+                Når skal du skifte til nærlys når du møter en bil i mørket?
+            </formulation>
+            <alternative>
+                Når jeg passerer bilen.
+            </alternative>
+            <alternative>
+                Straks jeg ser bilen.
+            </alternative>
+            <alternative>
+				Når avstanden er 400-500 meter.
+            </alternative>
+            <alternative isCorrect="true">
+                Når avstanden er 200-300 meter.
             </alternative>
         </question>
         <question>
@@ -558,6 +1003,125 @@
                 Tre ganger bilens lengde slik at man får en god oversikt og oppdager det som er nærme.
             </alternative>
         </question>
+		<question>
+            <formulation>
+				Du kjører i 20 km/t og bremser maksimalt. Det er litt glatt, og bremselengden blir 5 meter. Hva ville bremselengden blitt om farten hadde vært 80 km/t på samme føret?
+            </formulation>
+            <alternative>
+                20 meter.
+            </alternative>
+            <alternative>
+                40 meter.
+            </alternative>
+            <alternative>
+				60 meter.
+            </alternative>
+            <alternative isCorrect="true">
+                80 meter.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva er riktig om oppfattelse av fart og avstand?
+            </formulation>
+            <alternative>
+                Lengre avstander klarer man å bedømme.
+            </alternative>
+            <alternative>
+                Man kan bedømme både korte og lange avstander.
+            </alternative>
+            <alternative>
+				Det er lettere å bedømme avstander i mørket med fjernlys på.
+            </alternative>
+            <alternative isCorrect="true">
+                Korte avstander klarer man å bedømme.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva menes med fartsblindhet?
+            </formulation>
+            <alternative>
+                Føreren har problemer med å vurdere andre bilers hastighet.
+            </alternative>
+            <alternative>
+                Føreren har problemer med å vurdere hastigheten til bilen(e) bak har.
+            </alternative>
+            <alternative>
+				Føreren har problemer med å vurdere hastigheten for møtende trafikk.
+            </alternative>
+            <alternative isCorrect="true">
+                Føreren har problemer med å vurdere egen hastighet.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva må man være oppmerksom på når man kjører på is (glatt føre)?
+            </formulation>
+            <alternative>
+                Ingenting, man kjører som vanlig.
+            </alternative>
+            <alternative>
+                Sjekk at medtrafikanter bruker vinterdekk.
+            </alternative>
+            <alternative>
+				Reaksjonstiden vil være lengre.
+            </alternative>
+            <alternative isCorrect="true">
+                Bremselengden vil bli betydelig lengre enn tørt føre.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hvor dypt er mønsterdybde i vinterdekk?
+            </formulation>
+            <alternative>
+                Det finnes bare mønsterdybde i sommerdekk.
+            </alternative>
+            <alternative>
+                Vinterdekk har mønsterdybde på minst 1,6 mm.
+            </alternative>
+            <alternative>
+				Vinterdekk har mønsterdybde på minst 2,5 mm.
+            </alternative>
+            <alternative isCorrect="true">
+                Vinterdekk har mønsterdybde må være minimum 3 mm uansett dekktype.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hvilken påstand er mest korrekt ved feil lufttrykk i hjul?
+            </formulation>
+            <alternative>
+                Det blir vanskeligere å styre.
+            </alternative>
+            <alternative>
+                Det har liten eller ingen påvirkning.
+            </alternative>
+            <alternative>
+				Det påvirker drivstofforbruket.
+            </alternative>
+            <alternative isCorrect="true">
+                Det kan påvirke kjøreegenskaper, drivstofforbruk og dekkens livslengde.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Når har du vikeplikt for buss?
+            </formulation>
+            <alternative>
+                Alltid i rundkjøringer.
+            </alternative>
+            <alternative>
+                Du har aldri vikeplikt for bussen.
+            </alternative>
+            <alternative>
+				Du har alltid vikeplikt for bussen.
+            </alternative>
+            <alternative isCorrect="true">
+                Når bussen skal kjøre ut fra en busslomme og veiens fartsgrense er 60 km/t.
+            </alternative>
+        </question>
         <question>
             <formulation>
                 Hva er den viktigste sansen når man kjører bil?
@@ -577,6 +1141,51 @@
         </question>
     </category>
     <category field="trafikksystemet">
+	<question>
+            <formulation>
+               På motorveien finnes det som oftest veiskulder på sidene. Hva benyttes dette til?
+            </formulation>
+            <alternative>
+                Vei for syklister.
+            </alternative>
+            <alternative>
+				Fortau for fotgjengere.
+            </alternative>
+            <alternative isCorrect="true">
+                Benyttes av politi/ambulanse. Kan brukes som midlertidig stoppested dersom føreren må stanse.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Kan du parkere i en busslomme/bussholdeplass?
+            </formulation>
+            <alternative>
+                Ja, dersom det er også plass til bussen.
+            </alternative>
+            <alternative>
+                Ja, dersom du bare skal parkere i noen få minutter.
+            </alternative>
+            <alternative>
+				Ja, dersom du er på forskjørsvei.
+            </alternative>
+            <alternative isCorrect="true">
+                Nei, det er i utgangspunkt forbudt.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hva betyr blinkende gult lyskryss?
+            </formulation>
+            <alternative>
+                At den holder på å skifte lys til grønt.
+            </alternative>
+            <alternative>
+                At den holder på å skifte lys til rødt
+            </alternative>
+            <alternative isCorrect="true">
+                At trafikklyset er ute av drift og at høyreregelen gjelder.
+            </alternative>
+        </question>
     </category>
     <category field="trafikklover">    
     <question>
@@ -593,6 +1202,109 @@
             ja,hvis ulykken hendte under ulovlig øvelseskjøring.
         </alternative>
     </question>
+	<question>
+            <formulation>
+				Du har påkjørt en ku. Hva gjør du?
+            </formulation>
+            <alternative>
+                Kjører videre mens dyret ligger på bakken.
+            </alternative>
+            <alternative>
+                Avliv det med en gang og slakt dyret hvis mulig.
+            </alternative>
+            <alternative>
+				Kontakt politiet og nærmeste gård.
+            </alternative>
+            <alternative isCorrect="true">
+                Sjekker om dyret lider. Dersom den lider og det ikke lar seg gjøre å få tak i eier, veterinær eller politi innen rimelig tid, må føreren avvlive dyret. 
+            </alternative>
+        </question>
+	<question>
+            <formulation>
+				Hvilket alternativ er galt innenfor rundkjøring.
+            </formulation>
+            <alternative>
+                På kjørebane med to eller flere kjørefelt skal du i god tid kjøre inn i feltet lengst til høyre ved utkjøring til «høyre for midten» av rundkjøringen. 
+            </alternative>
+            <alternative>
+                Skal du «rett fram», velger du felt et som er hensiktsmessig, fortrinnsvis det høyre. 
+            </alternative>
+            <alternative>
+				Ved feltskifte i rundkjøring med flere felt, skal du gi tegn før feltskifte.
+            </alternative>
+            <alternative isCorrect="true">
+                Du skal ha høy fart inn mot rundkjøringen for å unngå trafikk.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hvor gjelder veiftrafikkloven? Hva er forskjell på veitrafikkloven og traffikkreglene. Hvor gjelder trafikkreglene?
+            </formulation>
+            <alternative>
+                F
+            </alternative>
+            <alternative>
+                F
+            </alternative>
+            <alternative>
+				F
+            </alternative>
+            <alternative isCorrect="true">
+                R
+            </alternative>
+        </question>
+	<question>
+            <formulation>
+               Hva er den generelle fartsgrensen i tettbebygd strøk?
+            </formulation>
+            <alternative>
+                30 km/t.
+            </alternative>
+            <alternative>
+                Det varierer fra sted til sted.
+            </alternative>
+            <alternative>
+				60 km/t.
+            </alternative>
+            <alternative isCorrect="true">
+                50 km/t.
+            </alternative>
+        </question>
+	<question>
+            <formulation>
+               Hva er forbudt når du kjører på motorvei?
+            </formulation>
+            <alternative>
+                Vending er forbudt.
+            </alternative>
+            <alternative>
+                Øvelseskjøring er forbudt.
+            </alternative>
+            <alternative>
+				Rygging er forbudt.
+            </alternative>
+            <alternative isCorrect="true">
+                Rygging og vending er forbudt.
+            </alternative>
+    </question>
+	<question>
+            <formulation>
+               Hvilket kjøretøy kan ikke kjøre på motorvei?
+            </formulation>
+            <alternative>
+                Personbil med tilhenger.
+            </alternative>
+            <alternative>
+                Traktor.
+            </alternative>
+            <alternative>
+				Buss.
+            </alternative>
+            <alternative isCorrect="true">
+                Moped.
+            </alternative>
+    </question>
+		
     <question>
             <formulation>
                 Er det tillatt å stanse foran utkjørsel?
@@ -609,6 +1321,125 @@
         </question>
     </category>
     <category field="vegen">
+	 <question>
+            <formulation>
+                Hva betyr hvit varsellinje?
+            </formulation>
+            <alternative>
+                Den betyr fare ved å passere bil i kjørefelt ved siden av.
+            </alternative>
+            <alternative>
+                Den betyr at forbikjøring er forbudt.
+            </alternative>
+            <alternative>
+				Det betyr at du kan skifte felt og at andre har vikeplikt for deg.
+            </alternative>
+            <alternative isCorrect="true">
+                Den betyr fare ved å skifte felt.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva betyr hvit varsellinje?
+            </formulation>
+            <alternative>
+                Det angir fare ved å passere bil i kjørefeltet ved siden av.
+            </alternative>
+            <alternative>
+                Det angir forbud ved å skifte felt.
+            </alternative>
+            <alternative>
+				Det angir en fartsgrense på 60 km/t.
+            </alternative>
+            <alternative isCorrect="true">
+                Det angir fare ved å skifte felt.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva betyr dobbel gul sperrelinje (heltrukket gul linje)?
+            </formulation>
+            <alternative>
+                Det angir fare ved å passere bil i kjørefeltet ved siden av.
+            </alternative>
+            <alternative>
+                Det angir forbud ved å skifte felt.
+            </alternative>
+            <alternative>
+				Det angir en fartsgrense på 60 km/t.
+            </alternative>
+            <alternative isCorrect="true">
+                Heltrukken linje som skiller kjørefelt, og som angir forbud mot å krysse eller berøre linja.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva betyr hvit varsellinje (lang strek og korte mellomrom)?
+            </formulation>
+            <alternative>
+                Det angir fare ved å passere bil i kjørefeltet ved siden av.
+            </alternative>
+            <alternative>
+                Det angir forbud ved å skifte felt.
+            </alternative>
+            <alternative>
+				Det angir en fartsgrense på 60 km/t.
+            </alternative>
+            <alternative isCorrect="true">
+                Det angir fare ved å skifte felt.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+				Hva betyr gul kjørefeltlinje(kort strek og lange mellomrom)?
+            </formulation>
+            <alternative>
+               Forbikjøring er forbudt.
+            </alternative>
+            <alternative>
+                Det er forbudt å krysse linja.
+            </alternative>
+            <alternative>
+				Linjen kan krysses dersom det er klart foran.
+            </alternative>
+            <alternative isCorrect="true">
+                Gul varsellinje angir at sikten fremover er for kort til vanlig forbikjøring.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hva er forskjellen mellom motorvei og motortrafikkvei?
+            </formulation>
+            <alternative>
+                Det er ingen forskjell mellom dem.
+            </alternative>
+            <alternative>
+                På motortrafikkvei kan man kjøre 100 km/t.
+            </alternative>
+            <alternative>
+				Motortrafikkvei er bedre kvalitet enn motorvei.
+            </alternative>
+            <alternative isCorrect="true">
+                Motortrafikkvei har som oftest bare en kjøreretning hver vei og bruker ikke alltid midtstripe. Det er dårligere standard enn motorvei.
+            </alternative>
+        </question>
+		<question>
+            <formulation>
+               Hva vil det si at det er striplet sidelinjer på begge sidene av veien?
+            </formulation>
+            <alternative>
+                Det er forkjørsvei.
+            </alternative>
+            <alternative>
+                Det er ikke forkjørsvei.
+            </alternative>
+            <alternative>
+				Veien er over 5,5 meter bred.
+            </alternative>
+            <alternative isCorrect="true">
+                Veiens bredder er under 5,5 meter og det er ingen midtstripe.
+            </alternative>
+        </question>
     </category>
     <category field="trafikksikkerhet">
         <question>
@@ -731,6 +1562,5 @@
         </question>
     </category>
 	</traffic>
-
 
 

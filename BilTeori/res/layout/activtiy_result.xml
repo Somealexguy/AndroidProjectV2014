@@ -10,5 +10,10 @@
         android:layout_height="wrap_content"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+	
+       <ListView
+        android:id="@+id/resultList"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+    </ListView>
 </LinearLayout>
