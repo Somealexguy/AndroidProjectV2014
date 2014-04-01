@@ -1,0 +1,724 @@
+<traffic>
+    <category field="bilen">
+        <question>
+            <formulation>
+                Hvordan finner man størst tillatte totalvekt på tilhenger bilen kan ha?
+            </formulation>
+            <alternative isCorrect="true">
+                Se i vognkortet.
+            </alternative>
+            <alternative>
+                 Spør en du kjenner.
+            </alternative>
+            <alternative>
+                Du regner det ut ved lengde på bilen gange høyde gange vekten og summen av dette delt på antall hestekrefter(hk).
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilke konsekvenser kan det få å kjøre med for tung tilhenger
+            </formulation>
+            <alternative isCorrect="true">
+                 Lenger  bremselengde, dårligere stabilitet, bilen går saktere og dårligere veigrep foran.
+            </alternative>
+            <alternative>
+                Føreren får dårlig sikt.
+            </alternative>
+            <alternative>
+                Bilen overstyrer når du svinger.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilke ulemper kan du oppleve dersom du har for tung last i bilen?
+            </formulation>
+            <alternative isCorrect="true">
+                Dårligere kjøreegenskaper, lengre bremselengde og at bilen bruker mer drivstoff.
+            </alternative>
+            <alternative>
+                At bilen ikke vil starte.
+            </alternative>
+            <alternative>
+                Du vil oppleve at bilen blir tregere.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilken konsekvenser kan det få å kjøre med tilhenger med for stor tillatt totalvekt?
+            </formulation>
+            <alternative isCorrect="true">
+                    Lenger bremselengde, overstyring, ulovlig og mer utslipp av CO2.
+            </alternative>
+            <alternative>
+                Bilen vil kunne kjøre som normalt.
+            </alternative>
+            <alternative>
+                Dekken blir fortere slitt og du må bytte dekk oftere.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilke skader er mest vanlig på felg og dekk?
+            </formulation>
+            <alternative isCorrect="true">
+                    Rifter i dekket, sår på dekksidene, bulk i felgkant.
+            </alternative>
+            <alternative>
+                Spisse gjenstander som har satt seg fast i dekket.
+            </alternative>
+            <alternative>
+                Slitt gummi pågrunn av for mye burning.
+            </alternative>
+        </question>
+        <question>
+                <formulation>
+                    Hvis dekkene er mest slitte på midten, hva kan dette fortelle deg?
+                </formulation>
+                <alternative isCorrect="true">
+                        At du har kjørt med for mye luft i dekkene.
+                </alternative>
+                <alternative>
+                    At du kjører med feil type dekk.
+                </alternative>
+                <alternative>
+                    At dekkene er for store.
+                </alternative>
+        </question>
+        <question>
+            <formulation>
+                Feil lufttrykk i dekket kan gi hvilke følger?
+            </formulation>
+            <alternative isCorrect="true">
+                Feil lufttrykk kan påvirke bl.a. kjøreegenskaper, drivstofforbruk, og dekkenes livslengde.
+            </alternative>
+            <alternative>
+                At dekket eksploderer hvis du kjører over 100 km/t.
+            </alternative>
+            <alternative>
+                Feil lufttrykk kan påvirke bremselengden og bremsetiden.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Feil lufttrykk i dekket kan gi hvilke følger?
+            </formulation>
+            <alternative isCorrect="true">
+                Feil lufttrykk kan påvirke bl.a. kjøreegenskaper, drivstofforbruk, og dekkenes livslengde.
+            </alternative>
+            <alternative>
+                At dekket eksploderer hvis du kjører over 100 km/t.
+            </alternative>
+            <alternative>
+                Feil lufttrykk kan påvirke bremselengden og bremsetiden.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilke ulemper er det ved å kjøre med for liten mønsterdybde?
+            </formulation>
+            <alternative isCorrect="true">
+                Det gir dårligere veggrep og  letter at det oppstår vannplaning.
+            </alternative>
+            <alternative>
+                Det blir vanskligere å holde seg på veien når man svinger.
+            </alternative>
+            <alternative>
+                Det vil føre til at du kan spole lettere og bremsetiden vil bli lenger.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Er det forsvarlig å kjøre når bremselysene ikke virker?
+            </formulation>
+            <alternative isCorrect="true">
+                Nei, du må sjekke sikringen eller bytte pære.
+            </alternative>
+            <alternative>
+                Det er lov  på landvei.
+            </alternative>
+            <alternative>
+                Det er lov så lenge du ikke skal bremse.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvordan finner du riktig dekkdimensjon?
+            </formulation>
+            <alternative isCorrect="true">
+                Ser i vognkortet.
+            </alternative>
+            <alternative>
+                Spør dekkforhandleren.
+            </alternative>
+            <alternative>
+                Det står på dekket.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Er det lov å kjøre med en varselslampe som lyser rødt i displayet til bilen?
+            </formulation>
+            <alternative isCorrect="true">
+                Nei, det er ikke lov.
+            </alternative>
+            <alternative>
+                Det er lov å kjøre frem til første kontroll, så blir du henvist til et verksted som kan hjelpe deg.
+            </alternative>
+            <alternative>
+                Det er ikke lov, men det er ikke farlig så det er bare å kjøre.
+            </alternative>
+        </question>
+    </category>
+    <category field="skilt">
+	<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+	<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+	<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+	<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+	<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+	<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+	<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+	<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+	<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+            FARLIG VEGSKULDER
+        </alternative>
+        <alternative>
+            GLATT KJØREBANE
+        </alternative>
+        <alternative>
+            FARLIGE SVINGER
+        </alternative>
+    </question>
+	
+		  
+   </category>
+    
+    <category field="generelt">
+        <question>
+            <formulation>
+                Skal man alltid ha sertifikaten på seg når man kjører bil?
+            </formulation>
+            <alternative>
+                Nei.
+            </alternative>
+            <alternative>
+                Kanskje.
+            </alternative>
+            <alternative isCorrect="true">
+                Ja.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Cirka hvor mange timer må du vente med å kjøre bil etter at du har konsumert alkohol?
+            </formulation>
+            <alternative>
+                Cirka 4 timer.
+            </alternative>
+            <alternative>
+                Cirka 6 timer.
+            </alternative>
+            <alternative>
+                Cirka 8 timer.
+            </alternative>
+            <alternative isCorrect="true">
+                Cirka 10 timer.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Vognkortet gir opplysninger om bilen. Hvem er disse opplysningene beregnet for?
+            </formulation>
+            <alternative>
+                Forsikringselskapet.
+            </alternative>
+            <alternative>
+                Verkstedet.
+            </alternative>
+            <alternative isCorrect="true">
+                Politiet og vegvesenet. 
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvor mange ganger lengre blir bremselengden til bilen når farten økes fra 30km/t til 90km/t?
+            </formulation>
+            <alternative isCorrect="true">
+                9 ganger så lang.
+            </alternative>
+            <alternative>
+                6 ganger så lang.
+            </alternative>
+            <alternative>
+                3 ganger så lang.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvem er mest utsatt for ulykker ved bilkjøring?
+            </formulation>
+            <alternative isCorrect="true">
+                25 år og yngre.
+            </alternative>
+            <alternative>
+                30 år og eldre.
+            </alternative>
+            <alternative>
+                60 år og eldre.
+            </alternative>
+        </question>
+        
+    </category>
+    <category field="bilførerensAnsvarogPlikter">
+        <question>
+            <formulation>
+                Hvem sitt ansvar er det at kjøretøyet er  i forsvalig tilstand når du er ute å kjører?
+            </formulation>
+            <alternative isCorrect="true">
+                Det er føreren sitt ansvar.
+            </alternative>
+            <alternative>
+                Asvaret tilhører den som er eier av kjøretøyet.
+            </alternative>
+            <alternative>
+                Vegtrafikkloven slår fast at det er føreren og eier av kjøretøyet som har delt ansvar.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvis du skal låne bort kjøretøyet ditt hvilke av setningene under gjelder deg?
+            </formulation>
+            <alternative isCorrect="true">
+                Kjøretøyets eier plikter å sørge for at kjøretøyet ikke brukes dersom det ikke er i forsvalig tilstand.
+            </alternative>
+            <alternative>
+                Kjøretøyets eier må søke om tillatelse før kjøretøyet blir lånt bort.
+            </alternative>
+            <alternative>
+                Eieren av kjøretøyet kan ikke låne bort kjøretøyet med mindre føreren av kjøretøyet er 25 år eller eldre.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvilken del av vognkortet skal alltid følge bilen?
+            </formulation>
+            <alternative isCorrect="true">
+                Del 1 av vognkortet.
+            </alternative>
+            <alternative>
+                Del 2 av vognkortet.
+            </alternative>
+            <alternative>
+                Ingen av delene.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Del 2 av vognkortet skal allltid?
+            </formulation>
+            <alternative isCorrect="true">
+                Oppbevares et annet sted enn kjøretøyet, tilgjenlig for eier av kjøretøyet.
+            </alternative>
+            <alternative>
+                Oppbevares hos en advokat, slik at hvis det oppstår en ulykke så vil advokaten være bedre forberedt.
+            </alternative>
+            <alternative>
+                Den kan oppbevares hvor du ønsker.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvis du skal øvelseskjøre så?
+            </formulation>
+            <alternative isCorrect="true">
+                Må du ha med deg gyldig legitimasjon og bevis på gjennomført trafikalt grunnkurs.
+            </alternative>
+            <alternative>
+                Må du ha med deg Gyldig legitimasjon.
+            </alternative>
+            <alternative>
+                Må du ha med deg bevis på gjennomført trafikalt grunnkurs.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hva er gresnen for promille i følge vegtrafikkloven?
+            </formulation>
+            <alternative isCorrect="true">
+                Grensen er 0.2 promille.
+            </alternative>
+            <alternative>
+                Grensen er 0.5 promille.
+            </alternative>
+            <alternative>
+                Grensen er 0.8 promille.
+            </alternative>
+            <alternative>
+                Grensen er 1.2 promille.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvorfor er det så mange som kjører påvirket av alkohol i trafikken?
+            </formulation>
+            <alternative isCorrect="true">
+                De vet ikke at de er påvirket, promillen er vanskelig å beregne, tar sjansen på å ikke bli oppdaget.
+            </alternative>
+            <alternative>
+                Fordi politi ikke har lov til å staffe de som bryter promille grensen.
+            </alternative>
+            <alternative>
+                Fordi alkohol ikke påvirker kjøreegenskapene dine.
+            </alternative>
+            <alternative>
+                Fordi stressede personer blir fortere edru.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvis du merker at du holder på å sovne under kjøring, bør du?
+            </formulation>
+            <alternative isCorrect="true">
+                Gå ut av bilen å trekke friskluft i 5 minutter før du kjører videre. Hvis det ikke hjelper så bør du stoppe å sove i 15 minutter før du fortsetter videre.
+            </alternative>
+            <alternative>
+                Sette på høy musikk eller øke volumet på radioen.
+            </alternative>
+            <alternative>
+                Ikke sove i 15 minutter fordi da blir man bare mer trøtt enn hva man var før man tok en powernap.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Er det påbudt med trafikkforsikring av bil i norge?
+            </formulation>
+            <alternative isCorrect="true">
+                Ja, du må alltid ha forsikret bilen din.
+            </alternative>
+            <alternative>
+                Ja, bare hvis du er norsk statsborger.
+            </alternative>
+            <alternative>
+                Ja, hvis du har vært i en trafikkulykke.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hva kan straffen for å forlate en trafikkskadet person være?
+            </formulation>
+            <alternative isCorrect="true">
+                3 års fengsel og inndragning av førerkortet for alltid.
+            </alternative>
+            <alternative>
+                Indragning av førerkortet, 3 års fengsel og miste muligheten til å eie et kjøretøy. 
+            </alternative>
+            <alternative>
+                3 års fengsel og miste muligheten til å eie eget kjøretøy.
+            </alternative>
+        </question>
+    </category>
+    <category field="bilfører">
+        <question>
+            <formulation>
+                Hvor skal blikket hvile når man er ute å kjører?
+            </formulation>
+            <alternative isCorrect="true">
+                Holde blikket så langt frem som mulig for å få god oversikt.
+            </alternative>
+            <alternative>
+                Nærme slik at du oppdager det som vil inntreffe deg raskest.
+            </alternative>
+            <alternative>
+                Tre ganger bilens lengde slik at man får en god oversikt og oppdager det som er nærme.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hva er den viktigste sansen når man kjører bil?
+            </formulation>
+            <alternative isCorrect="true">
+                Synet.
+            </alternative>
+            <alternative>
+                Likevektsansen.
+            </alternative>
+            <alternative>
+                    Ledd og muskelsansen.
+            </alternative>
+            <alternative>
+                Hørsel.
+            </alternative>
+        </question>
+    </category>
+    <category field="trafikksystemet">
+    </category>
+    <category field="trafikklover">    
+    <question>
+        <formulation>
+            Et forsikringsselskap har betalt ut erstatning til en skadd fotgjenger som ble påkjørt av en bil. Kan selskapet kreve å få disse pengene tilbake fra bilføreren?
+        </formulation>
+        <alternative>
+            Nei,ikke hvis forsikringen er betalt i rett tid.
+        </alternative>
+        <alternative>
+            ja,hvis føreren ikke hadde førerkortet med seg.
+        </alternative>
+        <alternative isCorrect="true">
+            ja,hvis ulykken hendte under ulovlig øvelseskjøring.
+        </alternative>
+    </question>
+    <question>
+            <formulation>
+                Er det tillatt å stanse foran utkjørsel?
+            </formulation>
+            <alternative>
+                Nei.
+            </alternative>
+            <alternative>
+                Ja.
+            </alternative>
+            <alternative isCorrect="true">
+                Ja,hvis du ikke blir stående lenger 5minutter.
+            </alternative>
+        </question>
+    </category>
+    <category field="vegen">
+    </category>
+    <category field="trafikksikkerhet">
+        <question>
+            <formulation>
+                Hvor langt fra skadestedet skal varselstrekanten settes opp?
+            </formulation>
+            <alternative isCorrect="true">
+                150 - 200 m.
+            </alternative>
+            <alternative>
+                100 m.
+            </alternative>
+            <alternative>
+                50 - 100 m.
+            </alternative>
+        </question>
+    </category>
+    <category field="bilitrafikk">
+        <question>
+            <formulation>
+                Du kjører i mørke med fjernlys tent. Hvor lang avstand kan du se en fotgjenger uten refleks?
+            </formulation>
+            <alternative>
+                Ca. 25 meter.
+            </alternative>
+            <alternative>
+                Ca. 200 meter.
+            </alternative>
+            <alternative>
+                Ca. 50 meter.
+            </alternative>
+            <alternative isCorrect="true">
+                Ca. 100 meter.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hva betyr hvit oppmerking midt i kjørebanen?
+            </formulation>
+            <alternative>
+                hvit oppmerking betyr at du ikke har lov til å foreta forbikjøring.
+            </alternative>
+            <alternative>
+                Hvit oppmerking angir at oversikten er meget god.
+            </alternative>
+            <alternative isCorrect="true">
+                Kjørebanen har trafikk i begge retninger.
+            </alternative>
+            <alternative >
+                Du kan være i gate med enveiskjøring.
+            </alternative>
+        </question>
+        <question>
+            <formulation>
+                Hvor tung tilhenger kan din personbil trekke?
+            </formulation>
+            <alternative>
+                1.5 ganger bilens totalvekt.
+            </alternative>
+            <alternative>
+                Tilhengeren kan veie det som står i tilhengerens vognkort.
+            </alternative>
+            <alternative>
+                Tilhengeren med last kan veie like mye som bilens totalvekt.
+            </alternative>
+            <alternative isCorrect="true">
+                Tilhengeren kan veie det som står i bilens vognkort så lenge den ikke overskrider 3500kg.
+            </alternative>
+        </question>
+        <question>
+        <formulation>
+            Hva er riktig kjøremåte når du skal inn i et felt for nedbremsing?
+        </formulation>
+        <alternative>
+            Alltid bremse for å vise de bak at du skal svinge.
+        </alternative>
+        <alternative>
+            Øke farten før du kjører inn i feltet for nedbremsing.
+        </alternative>
+        <alternative>
+            Senke farten før du kjører inn i feltet for nedbremsing.
+        </alternative>
+        <alternative isCorrect="true">
+            Jevn fart til du er i feltet for nedbremsing og så senke farten.
+        </alternative>
+    </question>
+        <question>
+        <formulation>
+            Hvilken fart skal du ha når du forlater et felt for fartsøkning?
+        </formulation>
+        <alternative>
+            Størst mulig.
+        </alternative>
+        <alternative>
+            Minst mulig.
+        </alternative>
+        <alternative>
+            Alltid 50 km/t.
+        </alternative>
+        <alternative isCorrect="true">
+            Cirka samme fart som feltet du kjører inn på, men ikke mer.
+        </alternative>
+    </question>
+        <question>
+            <formulation>
+                Når bør man holde lenger avstand enn 3 sekunder til bilen foran?
+            </formulation>
+            <alternative>
+                Hvis det er tørtt og varmt.
+            </alternative>
+            <alternative>
+                Alt er helt normalt.
+            </alternative>
+            <alternative>
+                Om natten.
+            </alternative>
+            <alternative isCorrect="true">
+                Når det er glatt.
+            </alternative>
+        </question>
+    </category>
+    
+    
+
+    
+	
+	
+	
+	</traffic>
+
+
+
