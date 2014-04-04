@@ -324,8 +324,22 @@
         </question>
     </category>
     <category field="skilt">
-	<question>
-		<formulation  isImage="@drawable/overgang.png" >
+	<!--<question>
+		<formulation  isImage="overgang">
+			Hva betyr dette skiltet?
+        </formulation>
+        <alternative isCorrect="true">
+           Gangfelt 150 m.
+        </alternative>
+        <alternative>
+             Gangfelt 250 m.
+        </alternative>
+        <alternative>
+             Gangfelt.
+        </alternative>
+    </question> -->
+		<question>
+	<formulation  isImage="vegskulder">
 			Hva betyr dette skiltet?
         </formulation>
         <alternative isCorrect="true">
@@ -338,8 +352,8 @@
             FARLIGE SVINGER
         </alternative>
     </question>
-	<!--- <question>
-        <formulation isImage="@drawable/gatetun.jpg">
+	<question>
+        <formulation isImage="gatetun">
 			Hva er høyeste tillatte fart etter at du har passert dette skiltet?
         </formulation>
         <alternative >
@@ -354,11 +368,11 @@
     </question>
 	
 	    <question>
-        <formulation isImage="@drawable/531feltfart.jpg">
+        <formulation isImage="feltforfart">
 			Du er på vei inn på motorvei. Hva betyr dette skiltet?
         </formulation>
         <alternative isCorrect="true">
-            Felt for fartsøkning
+            Felt for fartsøkning.
         </alternative>
         <alternative>
             Kjørebane har 3 felt i samme retning.
@@ -369,7 +383,7 @@
     </question>
 	
 	    <question>
-        <formulation isImage="@drawable/slash60.jpg">
+        <formulation isImage="slash60sone">
 			Du kjører på landevei. Hva er maks hastighet når du passerer dette skiltet?
         </formulation>
         <alternative isCorrect="true">
@@ -384,11 +398,11 @@
     </question>
 	
 	 <question>
-        <formulation isImage="@drawable/parkeringssone.jpg">
+        <formulation isImage="parkeringssone">
 			Når kan du ikke parkere her ifølge dette parkeringsskiltet?
         </formulation>
         <alternative isCorrect="true">
-            På.
+            Parkeringssone.
         </alternative>
         <alternative>
             70 km/t.
@@ -399,7 +413,7 @@
     </question>
 	
 	 <question>
-        <formulation isImage="@drawable/vikeplikt.jpg">
+        <formulation isImage="vikeplikt">
 			Hvem har vikeplikt ifølge dette skiltet?
         </formulation>
         <alternative isCorrect="true">
@@ -414,7 +428,7 @@
     </question>
 
 	<question>
-        <formulation isImage="@drawable/503motortrafikkvei.jpg">
+        <formulation isImage="motortrafikkvei">
 			Hva betyr dette skiltet?
         </formulation>
         <alternative >
@@ -426,24 +440,8 @@
         <alternative>
             Motorvei.
         </alternative>
-    </question>
-	-->
+    </question> 
 	<question>
-        <formulation>
-			Hvilket av disse skiltene er et fareskilt?
-        </formulation>
-        <alternative >
-   
-        </alternative>
-        <alternative>
-   
-        </alternative>
-        <alternative isCorrect="true">
-            
-        </alternative>
-    </question>
-	
-		    <question>
         <formulation>
 			Hvilke kjøretøy kan benytte et felt som viser dette skiltet?
         </formulation>
@@ -458,7 +456,7 @@
         </alternative>
     </question>
 	
-		    <question>
+	<question>
         <formulation>
 			Hva betyr dette skiltet
         </formulation>

@@ -13,7 +13,9 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -36,8 +38,12 @@ public class ExamOneActivity extends Activity implements IExam {
 	 //bruker hash table isteden for array for å vise at vi kan bruke det.
 	 //søking i en hashtable gjøres også i konstant tid.
 	private  Hashtable<Integer,String> userAnswers = new Hashtable<Integer, String>();
-	 private static int questionIndex=0;
-
+    private TextView timeLeft = null;
+	private static int questionIndex=0;
+	private long minutesUntilFinished=120;
+	private	long secondsUntilFinished=minutesUntilFinished*60;
+	private long millisUntilFinished=secondsUntilFinished*1000;
+	private ExamTimer timer =null;
 	/// <summary>
     /// Gets the filestream from the input file.
     /// </summary>
@@ -62,7 +68,7 @@ public class ExamOneActivity extends Activity implements IExam {
 		super.onCreate(savedInstanceState);
 		
 		InputStream instream=null;
-		instream=getFileStream("questions3.xml");
+		instream=getFileStream("questions.xml");
 		PullParser parser = new PullParser();
 		if(allQuestions.isEmpty()){
 			try {
@@ -79,28 +85,39 @@ public class ExamOneActivity extends Activity implements IExam {
 		}
 		
 		setContentView(R.layout.activity_exam_one);
+		
+		
 	}
-	
+
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
-		
-		newExam();		
-		ImageView questionImageView =(ImageView) findViewById(R.id.imageView_questions);
-		questionImageView.setVisibility(View.GONE);
+			newExam();
 	}
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+         super.onConfigurationChanged(newConfig);                
+         setContentView(R.layout.activity_exam_one);
+         newExam();
+ }
 	/// <summary>
     /// Makes a new exam.
     /// </summary>
 	private void newExam(){
-	
+		
+		if(questions.size()<1){
+			
 		randomizeQuestions();
 		getQuestionList();
 		randomizeAlternatives();
+		 timer = new ExamTimer(millisUntilFinished,1000);
+		 timer.start();
+		}
+		timeLeft=(TextView) findViewById(R.id.textCountdownTime);
 		setUpButtons();
 		setQuestion();
 		createRadioButton(); 
-		setTimer(1);
+		
 	}
 	/// <summary>
     /// sets up the buttons
@@ -112,7 +129,9 @@ public class ExamOneActivity extends Activity implements IExam {
 		Button btnCommit=(Button) findViewById(R.id.btnCommit);
 		btnPrev.setText("Prev");
 		btnNext.setText("Next");
-		btnPrev.setVisibility(View.INVISIBLE);
+		if(questionIndex<1){
+			btnPrev.setVisibility(View.INVISIBLE);
+			}
 		updateProgress();
 		
 		btnPrev.setOnClickListener(new View.OnClickListener(){
@@ -187,6 +206,8 @@ public class ExamOneActivity extends Activity implements IExam {
 		 
 		for (int i = 0; i < numberOfAlternatives; i++) {
 			rb[i]  = new RadioButton(this);
+			// I did this with code to show how to add colors dynamic
+			rb[i].setTextColor(Color.parseColor("#FFFFFF"));
 	        buttonGroup.addView(rb[i]); //the RadioButtons are added to the radioGroup instead of the layout
 	        
 	        ((RadioButton) buttonGroup.getChildAt(i)).setText(questions.get(questionIndex).getAlternatives().get(i).toString());
@@ -195,7 +216,7 @@ public class ExamOneActivity extends Activity implements IExam {
 	}
 	
 	 /// <summary>
-    /// Sets the question text in textview textViewFormulation.
+    /// Sets the question text in textview textViewFormulation and if there is an image it will be visible.
     /// </summary>
  public void setQuestion(){
   TextView formulationTextView = (TextView) findViewById(R.id.textViewFormulation); 
@@ -203,16 +224,19 @@ public class ExamOneActivity extends Activity implements IExam {
   formulationTextView.setText(questions.get(questionIndex).getFormulation());
   
   if(questions.get(questionIndex).getImage()!=null){
+	  questionImageView.setVisibility(View.VISIBLE);
    questionImageView.setImageResource(setImageResource());
-   questionImageView.setVisibility(View.VISIBLE);
   }else{
    questionImageView.setVisibility(View.GONE);
   } 
   
  }
+ /// <summary>
+ /// Sets the  image resource path.
+ /// </summary>
  public  int setImageResource(){
    
-   String uri = questions.get(questionIndex).getImage();
+   String uri = questions.get(questionIndex).getImage().trim();
    int imageResource=0;
    try{
    imageResource = this.getResources().getIdentifier(uri, "drawable", getPackageName());
@@ -300,7 +324,6 @@ public class ExamOneActivity extends Activity implements IExam {
     /// </summary>
 	public void deliverResult(){
 		registerUserAnswer();
-		setTimer(0);
 		Intent intent = new Intent(ExamOneActivity.this, com.nicklase.bilteori.gui.ResultActivity.class);
 		String[][] arrays = convertResultToArray();
 		
@@ -338,27 +361,13 @@ public class ExamOneActivity extends Activity implements IExam {
 	/// <summary>
     /// A method that makes a new timer from examTimer class
     /// </summary>
-private void setTimer(int s){
-	long minutesUntilFinished=120;
-	long secondsUntilFinished=minutesUntilFinished*60;
-	long millisUntilFinished=secondsUntilFinished*1000;
-	
-	examTimer timer = new examTimer(millisUntilFinished,1000);
-	if(s==1){
-		timer.start();
-	}
-	else{
-		timer.cancel();
-	}
-		
-}
+
 
 /// <summary>
 /// A inner class which extends CountDownTimer
 /// </summary>
-	public class examTimer extends CountDownTimer {
-        private TextView timeLeft = (TextView) findViewById(R.id.textCountdownTime);
-		public examTimer(long millisInFuture, long countDownInterval) {
+	public class ExamTimer extends CountDownTimer {
+		public ExamTimer(long millisInFuture, long countDownInterval) {
         	
             super(millisInFuture, countDownInterval);
             // TODO Auto-generated constructor stub
@@ -387,11 +396,13 @@ private void setTimer(int s){
     public void finish() {
     	// TODO Auto-generated method stub
     	super.finish();
+    	timer.cancel();
     	Log.w("myApp", "Du lukket eksamen.");
-    	setTimer(0);
     	userAnswers.clear();
+    	allQuestions.clear();
 		questions.clear();
 		questionIndex=0;
     }
+    
    
 }

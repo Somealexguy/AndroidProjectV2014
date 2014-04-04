@@ -2,94 +2,100 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-	android:background="@color/black"
+	android:background="@drawable/grey_fabric_bg"
     android:orientation="vertical"
 		>
 
     <TextView
         android:id="@+id/textCountdownTime"
+        style="@style/CodeFont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#3B3B3B"
-        style="@style/CodeFont"
-        android:text="Tid som gjenstår:" />
+        android:text="Tid" />
 
-    <TextView
-        android:id="@+id/textViewFormulation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/back"
-        android:layout_margin="20dp"
-        android:padding="10dp"
-        android:layout_gravity="center_horizontal"
-        style="@style/qFont"
-        android:text="Hvorfor må bilen stanse?" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
+        android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/imageView_questions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/back" />
+        <TextView
+            android:id="@+id/textViewFormulation"
+            style="@style/qFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+      		android:layout_gravity="center_horizontal"
+            android:background="@drawable/back"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="Hvorfor må bilen stans?" />
 
-    <RadioGroup
-        android:id="@+id/fullscreen_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:keepScreenOn="true" >
+        <ImageView
+            android:id="@+id/imageView_questions"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/back"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY" 
+            />
 
- 
-    </RadioGroup>
+        <RadioGroup
+            android:id="@+id/fullscreen_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:keepScreenOn="true" >
+        </RadioGroup>
 
-    <TextView
-        android:id="@+id/textViewQuestionCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        style="@style/CodeFont"
-        android:text="QuestionCount" />
 
-    <AbsoluteLayout
-        android:id="@+id/AbsoluteLayout1"
+
+    </LinearLayout>
+        <TextView
+            android:id="@+id/textViewQuestionCount"
+            style="@style/CodeFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="QuestionCount" />
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
+
+
+		<Button
             android:id="@+id/btnNext"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_x="220dp"
-            android:layout_y="150dp"
-            android:background="#CCCC99"
+            android:layout_alignParentRight="true"
+            android:background="#ffff19"
+            android:textColor="#000000"
              />
-
-		<Button
+		
+		        <Button
             android:id="@+id/btnPrev"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_x="0dp"
-            android:layout_y="150dp"
-            android:background="#CCCC99"
+            android:layout_alignParentLeft="true"
+            android:background="#ffff19"
+            android:textColor="#000000"
              />
 
-    </AbsoluteLayout>
+    </RelativeLayout>
 
-	        <TextView
-            android:id="@+id/checkAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-			android:layout_marginTop="30dp"
-            android:text="TextView" />
-			
-			  <TextView
-                android:id="@+id/textPoeng"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/question_count" />
+	<TextView
+          android:id="@+id/checkAnswer"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#FFFFFF"
+         />
+	
     <Button
         android:id="@+id/btnCommit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:textColor="#FFFFFF"
         android:text="@string/btn_commit" />
 
 </LinearLayout>
