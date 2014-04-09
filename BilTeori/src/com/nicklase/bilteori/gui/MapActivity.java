@@ -58,7 +58,7 @@ public void onMapLongClick(LatLng arg0) {
 /// <summary>
 ///   Sets up the required traffic station information.
 /// </summary>
-public void setUp(){
+private void setUp(){
 	map.setMyLocationEnabled(true);
 	addAllStation();
 	if(!trafficStations.isEmpty()){
@@ -69,7 +69,7 @@ public void setUp(){
 ///   Adds the marks for each traffic station.
 /// </summary>
 //decided to call it setUpMarks because addMark() was taken.
-public void setUpMarks(){
+private void setUpMarks(){
 	for (TrafficStation station : trafficStations) {
 		addMark(station.getLatlng(),station.getStationName(),station.getInfo());
 	}
@@ -85,13 +85,13 @@ private void addStation(String stationName, LatLng latlng,String info){
 ///   The method which invokes addStation.
 /// </summary>
 private void addAllStation(){
-	addStation("Hafslund trafikkstasjon",HAFSLUND,"Teoriprøver drop-in Mandag: 09:00–13:00 Tirsdag-fredag: 08:00–13:00");
-	addStation("Mysen trafikkstasjon",MYSEN,"Teoriprøver drop-in Tirsdag, onsdag og  torsdag 08:00-13:00");
+	addStation("Hafslund trafikkstasjon",HAFSLUND,"Teoriprøver drop-in"+"\n"+"Mandag: 09:00–13:00 Tirsdag-fredag: 08:00–13:00");
+	addStation("Mysen trafikkstasjon",MYSEN,"Teoriprøver drop-in "+ "\n" +"Tirsdag, onsdag og  torsdag 08:00-13:00");
 }
 /// <summary>
 ///   Adds one mark to the map.
 /// </summary>
-public void addMark(LatLng position,String title,String text){
+private void addMark(LatLng position,String title,String text){
 	this.map.addMarker(new MarkerOptions().position(position).title(title)
 			.snippet(text).alpha(0.7f));
 }

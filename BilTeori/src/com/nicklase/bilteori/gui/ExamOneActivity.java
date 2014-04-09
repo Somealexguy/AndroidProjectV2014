@@ -29,6 +29,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.nicklase.bilteori.R;
+import com.nicklase.bilteori.logic.Constant;
+import com.nicklase.bilteori.logic.FileWriter;
 import com.nicklase.bilteori.logic.PullParser;
 import com.nicklase.bilteori.logic.Question;
 import com.nicklase.bilteori.util.SystemUiHider;
@@ -46,7 +48,8 @@ public class ExamOneActivity extends Activity implements IExam {
 	private	long secondsUntilFinished=minutesUntilFinished*60;
 	private long millisUntilFinished=secondsUntilFinished*1000;
 	private ExamTimer timer =null;
-	
+	private FileWriter errorWriter= new FileWriter(Constant.WRITE_ERROR);
+	private Context context=null;
 	/// <summary>
     /// Gets the filestream from the input file.
     /// </summary>
@@ -57,8 +60,9 @@ public class ExamOneActivity extends Activity implements IExam {
 			 instream = assetManager.open(file.trim());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			//skriv til fil 
+				e.printStackTrace();
+			 errorWriter.saveDataToFile(e.toString(), context);
+			
 		}
 		
 		return instream;
@@ -69,7 +73,7 @@ public class ExamOneActivity extends Activity implements IExam {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		context=getApplicationContext();
 		InputStream instream=null;
 		instream=getFileStream("questions.xml");
 		PullParser parser = new PullParser();
@@ -81,10 +85,11 @@ public class ExamOneActivity extends Activity implements IExam {
 			} catch (XmlPullParserException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				 errorWriter.saveDataToFile(e.toString(), context);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				//write error to file
+				errorWriter.saveDataToFile(e.toString(), context);
 			}
 		}
 		
@@ -123,21 +128,20 @@ public class ExamOneActivity extends Activity implements IExam {
     /// Makes a new exam.
     /// </summary>
 	private void newExam(){
-		
-		if(questions.size()<1){
+		if(questions.isEmpty()){
+			randomizeQuestions();
+			getQuestionList();
+			randomizeAlternatives();
+			 timer = new ExamTimer(millisUntilFinished,1000);
+			 timer.start();
 			
-		randomizeQuestions();
-		getQuestionList();
-		randomizeAlternatives();
-		 timer = new ExamTimer(millisUntilFinished,1000);
-		 timer.start();
 		}
-		timeLeft=(TextView) findViewById(R.id.textCountdownTime);
-		setUpButtons();
-		setQuestion();
-		createRadioButton(); 
-		
+		 timeLeft=(TextView) findViewById(R.id.textCountdownTime);
+			setUpButtons();
+			setQuestion();
+			createRadioButton();
 	}
+	
 	/// <summary>
     /// sets up the buttons
     /// </summary>
@@ -260,9 +264,9 @@ public class ExamOneActivity extends Activity implements IExam {
    int imageResource=0;
    try{
    imageResource = this.getResources().getIdentifier(uri, "drawable", getPackageName());
-   }catch( Resources.NotFoundException error){
-    System.out.println(error);
-    //write the exception to file.
+   }catch( Resources.NotFoundException e){
+	   e.printStackTrace();
+	 errorWriter.saveDataToFile(e.toString(), context);
    }
    
   return  imageResource;
@@ -355,7 +359,6 @@ public class ExamOneActivity extends Activity implements IExam {
          intent.putExtras(bundle);
          startActivity(intent);
          finish();
-
 }
 	/// <summary>
     /// converts the result to a multidimensonal string array
@@ -418,18 +421,18 @@ public class ExamOneActivity extends Activity implements IExam {
     /// This method reset the exam.
     /// </summary>
     @Override
-    public void finish() {
-    	super.finish();
+    protected void onDestroy() {
+    	// TODO Auto-generated method stub
+    	super.onDestroy();
     	if(timer!=null){
-    	timer.cancel();
-    	}
-    	
-    	Log.w("myApp", "Du lukket eksamen.");
-    	userAnswers.clear();
-    	allQuestions.clear();
-		questions.clear();
-		questionIndex=0;
+        	timer.cancel();
+        	}
+        	
+        	Log.w("myApp", "Du lukket eksamen.");
+        	userAnswers.clear();
+        	allQuestions.clear();
+    		questions.clear();
+    		questionIndex=0;
     }
-    
-   
+      
 }

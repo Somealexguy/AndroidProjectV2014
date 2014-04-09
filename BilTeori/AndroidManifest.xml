@@ -52,6 +52,7 @@
         <activity
             android:name="com.nicklase.bilteori.gui.ResultActivity"
             android:label="@string/title_activity_exam_one"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:parentActivityName="com.nicklase.bilteori.gui.MainActivity" >
         </activity>
         <activity
@@ -99,6 +100,7 @@
         <activity
             android:name="com.nicklase.bilteori.gui.MapActivity"
             android:label="@string/title_activity_map"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:parentActivityName="com.nicklase.bilteori.gui.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
