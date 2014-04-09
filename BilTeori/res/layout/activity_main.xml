@@ -24,6 +24,12 @@
         android:text="@string/btn_exam_one" />
 
     <Button
+        android:id="@+id/btn_stats"
+        style="@style/buttonWidth"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/statistics" />
+    <Button
         android:id="@+id/btn_book"
         style="@style/buttonWidth"
         android:layout_width="200dp"

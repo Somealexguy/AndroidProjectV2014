@@ -59,14 +59,14 @@ public class MainActivity extends Activity {
 	        	 startActivity(intent);
 	         }
 	     });
-		 /*final Button buttonStatistics = (Button) findViewById(R.id.btn_sta);
+		 final Button buttonStatistics = (Button) findViewById(R.id.btn_stats);
 		 buttonStatistics.setOnClickListener(new View.OnClickListener() {
 	         public void onClick(View v) {
 	             // Perform action on click
 	        	 Intent intent = new Intent(com.nicklase.bilteori.gui.MainActivity.this, com.nicklase.bilteori.gui.StatisticsActivity.class);
 	        	 startActivity(intent);
 	         }
-	     }); */
+	     }); 
 		 final Button buttonPicture = (Button) findViewById(R.id.btn_takePicture);
 		 buttonPicture.setOnClickListener(new View.OnClickListener() {
 	         public void onClick(View v) {
