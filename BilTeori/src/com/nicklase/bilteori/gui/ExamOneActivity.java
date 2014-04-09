@@ -299,8 +299,9 @@ public class ExamOneActivity extends Activity implements IExam {
     /// Shuffles the Alternatives.
     /// </summary>	
 	public void randomizeAlternatives(){
-		long seed = System.nanoTime();
+		
 		for(int i=0;i<questions.size();i++){
+			long seed = System.nanoTime();
 		Collections.shuffle(questions.get(i).getAlternatives(),new Random(seed));
 		}
 	}
