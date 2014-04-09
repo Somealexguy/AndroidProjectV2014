@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BilTeori</string>
+    <string name="action_settings">Settings</string>
+    <string name="btn_book">bok</string>
+    <string name="btn_settings">Innstillinger</string>
+    <string name="statistics">Statistikk</string>
+    <string name="btn_exam_one">Teoriprøve</string>
+    <string name="examTwo">Eksamen2</string>
+    <string name="btn_take_picture">Ta bilde til sertifikatet!</string>
+    <string name="btn_get_directions">Vis vei til trafikkskole</string>
+    <string name="title_activity_book">Les boken her.</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_exam_one">Teoriprøve</string>
+    <string name="title_activity_exam_two">Exam_two</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_statistics">Statistics</string>
+    <string name="title_activity_take_picture">Ta bildet!</string>
+    <string name="title_activity_map">Kart</string>
+    <string name="question_count">Du er nå på spørsmål:</string>
+    <string name="btn_commit">Lever test</string>
+    <string name="timeText">Tid igjen:</string>
+    <string name="btn_takePicture">Ta bildet!</string>
+    <string name="helperTextPicture">Øv deg på å ta bildet til sertifikatet!</string>
+    <string name="noCamera">Du har ikke gyldig kamerainnstillinger</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
