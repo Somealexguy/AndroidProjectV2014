@@ -54,7 +54,7 @@ public class FileWriter {
 				}
 				
 			writer.write(text.getBytes());
-			writer.flush();
+		//	writer.flush();
 			 writer.close();
 		} catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -72,13 +72,13 @@ public class FileWriter {
 	/// </summary>
 	// not in use yet.
 	public void writeStatistics(String text, Context context){
-		String filename="stat.txt";
-		String path=null;
-		if(isExternalStorageWritable()){
-			path="/sdcard/";
-		}
+		 String filename ="stat.txt";
+		//String path=null;
+//		if(isExternalStorageWritable()){
+//			path="/sdcard/";
+//		}
 		
-		String dirPath=path+filename;
+		String dirPath=filename;
 		
 		File file= new File(dirPath);
 		
@@ -93,15 +93,17 @@ public class FileWriter {
 				}
 				
 			writer.write(text.getBytes());
-			writer.flush();
+			//writer.flush();
 			 writer.close();
 		} catch (FileNotFoundException e) {
             e.printStackTrace();
+            Log.e("myApp",e.toString());
         }catch(IOException e){
             e.printStackTrace();
+             Log.e("myApp",e.toString());
         }
-		
-		Log.w("myApp", "Du skrev stat til fil.");	    
+		Log.w("myApp", "Du skrev stat til fil.");
+		    
 	}
 	/// <summary>
 	///   Checks if external storage is available for read and write.

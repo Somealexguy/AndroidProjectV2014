@@ -9,6 +9,7 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.Html;
 import android.view.Menu;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -124,7 +125,7 @@ private class drawRoute extends AsyncTask<Void, Void, Document> {
 ///   The method which invokes addStation.
 /// </summary>
 private void addAllStation(){
-	addStation("Hafslund trafikkstasjon",Constant.HAFSLUND,"Teoriprøver drop-in"+"\n"+"Mandag: 09:00–13:00 Tirsdag-fredag: 08:00–13:00");
+	addStation("Hafslund trafikkstasjon",Constant.HAFSLUND,Html.fromHtml("<p><b>Teoriprøver drop-in</b></p> <br /> Mandag: 09:00–13:00 Tirsdag-fredag: 08:00–13:00").toString());
 	addStation("Mysen trafikkstasjon",Constant.MYSEN,"Teoriprøver drop-in "+ "\n" +"Tirsdag, onsdag og  torsdag 08:00-13:00");
 	addStation("Drøbak trafikkstasjon",Constant.DROBAK,"Teoriprøver drop in Mandag: 0900–1300 Tirsdag–fredag: 0800–1300");
 	addStation("Kongsvinger trafikkstasjon",Constant.KONGSVINGER,"Teoriprøver drop in Mandag: 09:00–13:00 Tirsdag–fredag: 08:00–13:00");
