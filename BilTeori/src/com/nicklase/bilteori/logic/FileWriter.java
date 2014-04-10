@@ -113,15 +113,4 @@ public class FileWriter {
 	    }
 	    return false;
 	}
-	/// <summary>
-	///   Checks if external storage is available to at least read 
-	/// </summary>
-	public boolean isExternalStorageReadable() {
-	    String state = Environment.getExternalStorageState();
-	    if (Environment.MEDIA_MOUNTED.equals(state) ||
-	        Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-	        return true;
-	    }
-	    return false;
-	}
 }

@@ -65,6 +65,7 @@
         <activity
             android:name="com.nicklase.bilteori.gui.ExamOneActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
             android:parentActivityName="com.nicklase.bilteori.gui.MainActivity" >
         </activity>
         <activity

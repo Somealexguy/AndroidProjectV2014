@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,6 +32,7 @@ import android.widget.TextView;
 import com.nicklase.bilteori.R;
 import com.nicklase.bilteori.logic.Constant;
 import com.nicklase.bilteori.logic.FileWriter;
+import com.nicklase.bilteori.logic.NotificationExam;
 import com.nicklase.bilteori.logic.PullParser;
 import com.nicklase.bilteori.logic.Question;
 import com.nicklase.bilteori.util.SystemUiHider;
@@ -50,6 +52,8 @@ public class ExamOneActivity extends Activity implements IExam {
 	private ExamTimer timer =null;
 	private FileWriter errorWriter= new FileWriter(Constant.WRITE_ERROR);
 	private Context context=null;
+	private NotificationExam test = new NotificationExam();
+	private boolean inThisActivity= true;
 	/// <summary>
     /// Gets the filestream from the input file.
     /// </summary>
@@ -98,7 +102,7 @@ public class ExamOneActivity extends Activity implements IExam {
 		
 	}
 	/// <summary>
-    /// This method is run after create
+    /// This method is run after create.
     /// </summary>
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
@@ -110,6 +114,58 @@ public class ExamOneActivity extends Activity implements IExam {
 			header.setText("XML dokumentet ble ikke lest.");
 		}
 	}
+	/// <summary>
+    /// This method is run when the activity is paused.
+    /// </summary>
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		Log.w("myApp","Paused");
+		if(inThisActivity){
+			test.startInForeground(context);
+		}
+		
+	}
+	/// <summary>
+    /// This method is run when the activity is resumed.
+    /// </summary>
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Log.w("myApp","Resumed");
+		if(!allQuestions.isEmpty()){	
+			newExam();
+		}else{
+			TextView header = (TextView) findViewById(R.id.textViewFormulation);
+			header.setText("XML dokumentet ble ikke lest.");
+		}
+	}
+/// <summary>
+/// This method is run when backButton is pressed.
+/// </summary>
+@Override
+public void onBackPressed() {
+	// TODO Auto-generated method stub
+	super.onBackPressed();
+	inThisActivity=false;
+}
+/// <summary>
+/// This method is run when backButton in the action bar is pressed.
+/// </summary>
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+        case android.R.id.home:
+            // app icon in action bar clicked; goto parent activity.
+            this.finish();
+            onBackPressed();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+    }
+}
 	/// <summary>
     /// This method is run each time you tilt your phone.
     /// </summary>
@@ -167,6 +223,7 @@ public class ExamOneActivity extends Activity implements IExam {
 					setQuestion();
 					createRadioButton();
 					updateProgress();
+					
 				}else if(questionIndex==1){
 					btnPrev.setVisibility(View.INVISIBLE);
 					questionIndex--;
@@ -174,7 +231,6 @@ public class ExamOneActivity extends Activity implements IExam {
 					setQuestion();
 					createRadioButton();
 					updateProgress();
-					
 				}
 				btnNext.setVisibility(View.VISIBLE);
 			}
@@ -356,7 +412,7 @@ public class ExamOneActivity extends Activity implements IExam {
 		bundle.putStringArray("questionsArray", arrays[0]);
 		bundle.putStringArray("userAnswerArray", arrays[1]);
 		bundle.putStringArray("questionsAnswerArray", arrays[2]);
-		
+		inThisActivity=false;
          intent.putExtras(bundle);
          startActivity(intent);
          finish();

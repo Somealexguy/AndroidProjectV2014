@@ -1,13 +1,20 @@
 package com.nicklase.bilteori.gui;
 import java.util.ArrayList;
 
+import org.w3c.dom.Document;
+
 import android.app.Activity;
+import android.graphics.Color;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import com.nicklase.bilteori.logic.Constant;
+import com.nicklase.bilteori.logic.GMapV2Direction;
+import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -18,16 +25,15 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.nicklase.bilteori.R;
 import com.nicklase.bilteori.logic.TrafficStation;
 
 public class MapActivity extends FragmentActivity  implements OnMapLongClickListener{
-	private final LatLng HAFSLUND = new LatLng(59.262251, 11.126018);
-	private final LatLng MYSEN = new LatLng(59.5553943, 11.3651344);
-	private Location myPosition = null;
+	private LatLng myPosition = new LatLng(0,0);
 	private ArrayList<TrafficStation> trafficStations = new ArrayList<TrafficStation>();
-	
-  private GoogleMap map;
+	private GMapV2Direction mapDirection;
+	private GoogleMap map;
   
 /// <summary>
 ///   Method run on create.
@@ -38,11 +44,9 @@ public class MapActivity extends FragmentActivity  implements OnMapLongClickList
     setContentView(R.layout.activity_map);
     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 	map = mapFragment.getMap();
-	//myPosition= map.getMyLocation();
-	
 	setUp();
 	if (savedInstanceState == null) {
-		 map.moveCamera(CameraUpdateFactory.newLatLngZoom(HAFSLUND, 5));
+		 map.moveCamera(CameraUpdateFactory.newLatLngZoom(Constant.HAFSLUND, 5));
 	}
 
     // Zoom in, animating the camera.
@@ -65,6 +69,12 @@ private void setUp(){
 		setUpMarks();
 	}
 }
+@Override
+protected void onPostCreate(Bundle savedInstanceState) {
+	// TODO Auto-generated method stub
+	super.onPostCreate(savedInstanceState);
+	findAdjacentStations();
+}
 /// <summary>
 ///   Adds the marks for each traffic station.
 /// </summary>
@@ -81,12 +91,44 @@ private void addStation(String stationName, LatLng latlng,String info){
 	TrafficStation t = new TrafficStation(stationName,latlng, info);
 	trafficStations.add(t);
 }
+private void findAdjacentStations(){
+//	LatLng myLoc = new LatLng(map.getMyLocation().getLatitude(),map.getMyLocation().getLongitude());
+//	
+//	map.addPolyline(new PolylineOptions().geodesic(true).add(trafficStations.get(0).getLatlng()).add(myLoc));
+	//new drawRoute().execute();
+}
+private class drawRoute extends AsyncTask<Void, Void, Document> {
+	Document doc;
+	PolylineOptions rectLine;
+
+	@Override 
+	protected Document doInBackground(Void... params) {
+		doc = mapDirection.getDocument(myPosition, Constant.HAFSLUND, GMapV2Direction.MODE_DRIVING);
+
+		ArrayList<LatLng> directionPoint = mapDirection.getDirection(doc);
+		rectLine = new PolylineOptions().width(3).color(Color.BLUE);
+
+		for (int i = 0; i < directionPoint.size(); i++) {
+			rectLine.add(directionPoint.get(i));
+		}
+
+		return null;
+	}
+
+	@Override
+	protected void onPostExecute(Document result) {
+		map.addPolyline(rectLine);
+	}
+}
 /// <summary>
 ///   The method which invokes addStation.
 /// </summary>
 private void addAllStation(){
-	addStation("Hafslund trafikkstasjon",HAFSLUND,"Teoriprøver drop-in"+"\n"+"Mandag: 09:00–13:00 Tirsdag-fredag: 08:00–13:00");
-	addStation("Mysen trafikkstasjon",MYSEN,"Teoriprøver drop-in "+ "\n" +"Tirsdag, onsdag og  torsdag 08:00-13:00");
+	addStation("Hafslund trafikkstasjon",Constant.HAFSLUND,"Teoriprøver drop-in"+"\n"+"Mandag: 09:00–13:00 Tirsdag-fredag: 08:00–13:00");
+	addStation("Mysen trafikkstasjon",Constant.MYSEN,"Teoriprøver drop-in "+ "\n" +"Tirsdag, onsdag og  torsdag 08:00-13:00");
+	addStation("Drøbak trafikkstasjon",Constant.DROBAK,"Teoriprøver drop in Mandag: 0900–1300 Tirsdag–fredag: 0800–1300");
+	addStation("Kongsvinger trafikkstasjon",Constant.KONGSVINGER,"Teoriprøver drop in Mandag: 09:00–13:00 Tirsdag–fredag: 08:00–13:00");
+	addStation("Jessheim trafikkstasjon",Constant.JESSHEIM,"Teoriprøver drop in ukjent.");
 }
 /// <summary>
 ///   Adds one mark to the map.
