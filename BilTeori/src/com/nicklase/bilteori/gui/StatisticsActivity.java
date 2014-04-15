@@ -23,7 +23,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.os.Build;
@@ -69,6 +71,7 @@ private StatisticsListViewAdapter adapter=null;
 			super.onPostCreate(savedInstanceState);
 			task= new ReadFromStatisticsFile();
 			task.execute();
+			setUp();
 			
 		}
 	private void setUpListItem(){
@@ -76,7 +79,17 @@ private StatisticsListViewAdapter adapter=null;
         adapter = new StatisticsListViewAdapter(this, list);
         listview.setAdapter(adapter);
 	}
-
+private void setUp(){
+	Button delete = (Button) findViewById(R.id.btnDeleteData);
+	delete.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			new DeleteStatisticsFile().execute();
+		}
+	});
+}
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -93,17 +106,18 @@ private StatisticsListViewAdapter adapter=null;
 				return rootView;
 			}
 		}
-//	private class DeleteStatisticsFile extends AsyncTask<Void, Void, Void> {
-//		String result;
-//	   @Override
-//	   protected void doInBackground(Void... ) {
-//	         //Get All Route values
-//	             MyFileReader newReader= new MyFileReader();
-//	             
-//	             newReader.deleteStatistics();
-//	
-//	   }
-//	}
+	private class DeleteStatisticsFile extends AsyncTask<Void, Void, String> {
+		
+	   @Override
+	   protected String doInBackground(Void... params) {
+	         //Get All Route values
+		   String response=null;
+	             MyFileReader newReader= new MyFileReader();
+	             
+	             newReader.deleteStatistics();
+	             return response;
+	   }
+	}
 private class ReadFromStatisticsFile extends AsyncTask<Void, Void, String> {
 		String result;
 	   @Override
