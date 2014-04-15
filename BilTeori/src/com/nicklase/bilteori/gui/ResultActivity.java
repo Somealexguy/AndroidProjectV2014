@@ -22,12 +22,10 @@ public class ResultActivity extends Activity{
 	private String[] questionsArray;
 	private String[] userAnswerArray;
 	private ArrayList<HashMap> list;
-	private final String FIRST_COLUMN ="first";
-	private final String SECOND_COLUMN ="second";
-	private final String FORM_COLUMN ="form";
 	private FileWriter statWriter= new FileWriter(Constant.WRITE_STATISTICS);
 	private Context context=null;
 	private int poeng =0;
+	private String timeUsed;
 	/// <summary>
     /// Run when activity is created.
     /// </summary>
@@ -41,6 +39,7 @@ public class ResultActivity extends Activity{
 			  questionsArray = b.getStringArray("questionsArray");
 				userAnswerArray=b.getStringArray("userAnswerArray");;
 			  questionAnswerArray = b.getStringArray("questionsAnswerArray");
+			  timeUsed=(String) b.getCharSequence("tid");
 		  }
 	       
 		 ListView listview = (ListView) findViewById(R.id.resultList);
@@ -57,8 +56,8 @@ public class ResultActivity extends Activity{
 		super.onPostCreate(savedInstanceState);
 		context=getApplicationContext();
 		checkAnswer();
-		String sum=poeng+"";
-		statWriter.saveDataToFile(sum,context);
+		String result=poeng+"¤"+timeUsed+";";
+		statWriter.saveDataToFile(result,context);
 	}
 	/// <summary>
     /// Checks the answers give in the exam.
@@ -98,17 +97,17 @@ public class ResultActivity extends Activity{
 	        list = new ArrayList<HashMap>();
 	 
 	    	HashMap temp1 = new HashMap();
-	    	temp1.put(FORM_COLUMN, "Spørsmål");
-            temp1.put(FIRST_COLUMN,"Riktig svar:");
-            temp1.put(SECOND_COLUMN, "Ditt svar:");
+	    	temp1.put(Constant.FORM_COLUMN, "Spørsmål");
+            temp1.put(Constant.FIRST_COLUMN,"Riktig svar:");
+            temp1.put(Constant.SECOND_COLUMN, "Ditt svar:");
             list.add(temp1);
             
            
 	        for(int i=0;i<questionsArray.length;i++){
 	        	HashMap temp = new HashMap();
-	        	temp.put(FORM_COLUMN, questionsArray[i]);
-	            temp.put(FIRST_COLUMN,questionAnswerArray[i]);
-	            temp.put(SECOND_COLUMN, userAnswerArray[i]);
+	        	temp.put(Constant.FORM_COLUMN, questionsArray[i]);
+	            temp.put(Constant.FIRST_COLUMN,questionAnswerArray[i]);
+	            temp.put(Constant.SECOND_COLUMN, userAnswerArray[i]);
 	            list.add(temp);
 	        } 
 	    }

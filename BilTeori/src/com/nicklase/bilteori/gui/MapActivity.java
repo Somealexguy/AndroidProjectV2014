@@ -2,7 +2,6 @@ package com.nicklase.bilteori.gui;
 import java.util.ArrayList;
 
 import org.w3c.dom.Document;
-
 import android.app.Activity;
 import android.graphics.Color;
 import android.location.Location;
@@ -12,12 +11,18 @@ import android.support.v4.app.FragmentActivity;
 import android.text.Html;
 import android.view.Menu;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
 
 import com.nicklase.bilteori.logic.Constant;
 import com.nicklase.bilteori.logic.GMapV2Direction;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.LocationSource;
+import com.google.android.gms.maps.LocationSource.OnLocationChangedListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
@@ -30,11 +35,14 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.nicklase.bilteori.R;
 import com.nicklase.bilteori.logic.TrafficStation;
 
-public class MapActivity extends FragmentActivity  implements OnMapLongClickListener{
-	private LatLng myPosition = new LatLng(0,0);
+public class MapActivity extends FragmentActivity  implements OnMapLongClickListener, ConnectionCallbacks, OnConnectionFailedListener{
+	private LatLng fromPosition;
+	private LatLng toPosition =Constant.HAFSLUND;;
+	private Document document;
 	private ArrayList<TrafficStation> trafficStations = new ArrayList<TrafficStation>();
 	private GMapV2Direction mapDirection;
 	private GoogleMap map;
+	private LocationClient myLocation =null;
   
 /// <summary>
 ///   Method run on create.
@@ -45,11 +53,14 @@ public class MapActivity extends FragmentActivity  implements OnMapLongClickList
     setContentView(R.layout.activity_map);
     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 	map = mapFragment.getMap();
+	map.setMyLocationEnabled(true);
+	map.getUiSettings().setZoomControlsEnabled(true);
+	myLocation = new LocationClient(this, this, this);
 	setUp();
 	if (savedInstanceState == null) {
 		 map.moveCamera(CameraUpdateFactory.newLatLngZoom(Constant.HAFSLUND, 5));
 	}
-
+	
     // Zoom in, animating the camera.
     map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
     map.setOnMapLongClickListener(this);
@@ -64,7 +75,6 @@ public void onMapLongClick(LatLng arg0) {
 ///   Sets up the required traffic station information.
 /// </summary>
 private void setUp(){
-	map.setMyLocationEnabled(true);
 	addAllStation();
 	if(!trafficStations.isEmpty()){
 		setUpMarks();
@@ -74,7 +84,7 @@ private void setUp(){
 protected void onPostCreate(Bundle savedInstanceState) {
 	// TODO Auto-generated method stub
 	super.onPostCreate(savedInstanceState);
-	findAdjacentStations();
+	myLocation.connect();
 }
 /// <summary>
 ///   Adds the marks for each traffic station.
@@ -85,6 +95,19 @@ private void setUpMarks(){
 		addMark(station.getLatlng(),station.getStationName(),station.getInfo());
 	}
 }
+@Override
+protected void onResume() {
+	super.onResume();
+
+	myLocation.connect();
+}
+
+@Override
+protected void onPause() {
+	super.onPause();
+
+	myLocation.disconnect();
+}
 /// <summary>
 ///   Adds one station to the list of trafficStations.
 /// </summary>
@@ -93,34 +116,14 @@ private void addStation(String stationName, LatLng latlng,String info){
 	trafficStations.add(t);
 }
 private void findAdjacentStations(){
-//	LatLng myLoc = new LatLng(map.getMyLocation().getLatitude(),map.getMyLocation().getLongitude());
-//	
-//	map.addPolyline(new PolylineOptions().geodesic(true).add(trafficStations.get(0).getLatlng()).add(myLoc));
-	//new drawRoute().execute();
+	
+	
+	addPolyLine(fromPosition,toPosition);
 }
-private class drawRoute extends AsyncTask<Void, Void, Document> {
-	Document doc;
-	PolylineOptions rectLine;
-
-	@Override 
-	protected Document doInBackground(Void... params) {
-		doc = mapDirection.getDocument(myPosition, Constant.HAFSLUND, GMapV2Direction.MODE_DRIVING);
-
-		ArrayList<LatLng> directionPoint = mapDirection.getDirection(doc);
-		rectLine = new PolylineOptions().width(3).color(Color.BLUE);
-
-		for (int i = 0; i < directionPoint.size(); i++) {
-			rectLine.add(directionPoint.get(i));
-		}
-
-		return null;
-	}
-
-	@Override
-	protected void onPostExecute(Document result) {
-		map.addPolyline(rectLine);
-	}
+private void addPolyLine(LatLng fPostion,LatLng tPosition){
+	map.addPolyline(new PolylineOptions().geodesic(true).add(fPostion).add(tPosition));
 }
+
 /// <summary>
 ///   The method which invokes addStation.
 /// </summary>
@@ -138,4 +141,25 @@ private void addMark(LatLng position,String title,String text){
 	this.map.addMarker(new MarkerOptions().position(position).title(title)
 			.snippet(text).alpha(0.7f));
 }
+
+
+@Override
+public void onConnected(Bundle arg0) {
+	// TODO Auto-generated method stub
+	
+	Location loc = myLocation.getLastLocation();
+	fromPosition =new LatLng(loc.getLatitude(), loc.getLongitude());
+	findAdjacentStations();
+}
+
+@Override
+public void onConnectionFailed(ConnectionResult arg0) {
+	Toast.makeText(this, "Connection Failed", Toast.LENGTH_LONG).show();
+	
+}
+@Override
+public void onDisconnected() {
+	Toast.makeText(this, "Disconnected", Toast.LENGTH_LONG).show();
+}
+
 } 

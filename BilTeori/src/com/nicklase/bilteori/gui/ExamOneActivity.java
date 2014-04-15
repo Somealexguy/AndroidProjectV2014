@@ -49,6 +49,8 @@ public class ExamOneActivity extends Activity implements IExam {
 	private long minutesUntilFinished=120;
 	private	long secondsUntilFinished=minutesUntilFinished*60;
 	private long millisUntilFinished=secondsUntilFinished*1000;
+	private int minutesUsed;
+	private int secondsUsed;
 	private ExamTimer timer =null;
 	private FileWriter errorWriter= new FileWriter(Constant.WRITE_ERROR);
 	private Context context=null;
@@ -211,7 +213,6 @@ public boolean onOptionsItemSelected(MenuItem item) {
 			btnPrev.setVisibility(View.INVISIBLE);
 			}
 		updateProgress();
-		
 		btnPrev.setOnClickListener(new View.OnClickListener(){
 
 			@Override
@@ -408,9 +409,11 @@ public boolean onOptionsItemSelected(MenuItem item) {
 		String[][] arrays = convertResultToArray();
 		
 		Bundle bundle=new Bundle(); 
+	  	String time=minutesUsed+":"+secondsUsed;
 		bundle.putStringArray("questionsArray", arrays[0]);
 		bundle.putStringArray("userAnswerArray", arrays[1]);
 		bundle.putStringArray("questionsAnswerArray", arrays[2]);
+		bundle.putCharSequence("tid", time);
 		inThisActivity=false;
          intent.putExtras(bundle);
          startActivity(intent);
@@ -450,6 +453,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
         @Override
         public void onFinish() {
+        	
         	deliverResult();
         }
 
@@ -459,7 +463,9 @@ public boolean onOptionsItemSelected(MenuItem item) {
         	
         	double minutsUntilFinished = (millisUntilFinished/1000)/60;
         	
-        	
+        	minutesUsed=(int) (120-minutsUntilFinished)-1;
+        	secondsUsed= (int) (60-secondsUntilFinished);
+      
         	timeLeft.setText("Tid igjen: " + (int) minutsUntilFinished + " minutter " + (int) secondsUntilFinished  + " sekunder");
         }
         
