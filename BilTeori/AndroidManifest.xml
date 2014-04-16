@@ -60,8 +60,7 @@
             android:name="com.nicklase.bilteori.gui.BookActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_book"
-            android:parentActivityName="com.nicklase.bilteori.gui.MainActivity"
-            android:theme="@style/FullscreenTheme" >
+            android:parentActivityName="com.nicklase.bilteori.gui.MainActivity">
         </activity>
         <activity
             android:name="com.nicklase.bilteori.gui.ExamOneActivity"

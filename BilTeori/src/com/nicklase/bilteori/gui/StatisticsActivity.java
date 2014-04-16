@@ -25,9 +25,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.os.Build;
 
 public class StatisticsActivity extends Activity {
@@ -35,6 +37,8 @@ private ArrayList<Result> allStatistics = new ArrayList<Result>();
 private ArrayList<HashMap<String, String>> list;
 private ReadFromStatisticsFile task=null;
 private StatisticsListViewAdapter adapter=null;
+private Toast myToast;
+private ListView listview;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,6 +48,7 @@ private StatisticsListViewAdapter adapter=null;
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new StatisticsFragment()).commit();
 		}		
+		myToast=new Toast(this);
 	}
 
 	@Override
@@ -75,7 +80,7 @@ private StatisticsListViewAdapter adapter=null;
 			
 		}
 	private void setUpListItem(){
-		ListView listview = (ListView) findViewById(R.id.listViewEachResult);
+		listview = (ListView) findViewById(R.id.listViewEachResult);
         adapter = new StatisticsListViewAdapter(this, list);
         listview.setAdapter(adapter);
 	}
@@ -87,6 +92,9 @@ private void setUp(){
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			new DeleteStatisticsFile().execute();
+			//adapter.clear();
+			((BaseAdapter) listview.getAdapter()).notifyDataSetChanged();
+			
 		}
 	});
 }
@@ -113,10 +121,22 @@ private void setUp(){
 	         //Get All Route values
 		   String response=null;
 	             MyFileReader newReader= new MyFileReader();
+	             if(newReader.deleteStatistics()=="ok")
+	            	 response="ok";
 	             
-	             newReader.deleteStatistics();
 	             return response;
 	   }
+	   @Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			if(result=="ok"){
+				myToast.makeText(getApplicationContext(), "Dataene ble slettet.", Toast.LENGTH_SHORT).show();
+				
+			}else{
+				myToast.makeText(getApplicationContext(), "Dataene ble ikke slettet.", Toast.LENGTH_SHORT).show();
+			}
+		}
 	}
 private class ReadFromStatisticsFile extends AsyncTask<Void, Void, String> {
 		String result;
@@ -166,6 +186,9 @@ private class ReadFromStatisticsFile extends AsyncTask<Void, Void, String> {
 	  	            list.add(temp);
 	  	        } 
 	}
+	 public void notifyDataSetChanged() {
+		    this.notifyDataSetChanged();
+		}
 	@Override
 		public void onBackPressed() {
 			// TODO Auto-generated method stub

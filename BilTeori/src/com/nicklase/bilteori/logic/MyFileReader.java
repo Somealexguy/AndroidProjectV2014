@@ -62,8 +62,9 @@ public class MyFileReader {
 		/// <summary>
 		///   Deletes the file.
 		/// </summary>
-		public void deleteStatistics(){
+		public String deleteStatistics(){
 			String filename=Constant.STATISTICS_FILENAME;
+			String status="";
 			File dirPath=null;
 			try {
 				if(VERSION.SDK_INT>=18){
@@ -80,12 +81,13 @@ public class MyFileReader {
 			
 			try{
 				dirPath.delete();
+				status="ok";
 			}catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 				errorWriter.saveDataToFile(e.toString(), null);
 			}
-
+			return status;
 		}
 		/// <summary>
 		///   Checks if external storage is available to at least read 

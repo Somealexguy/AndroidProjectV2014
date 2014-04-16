@@ -33,7 +33,7 @@ public class StatisticsListViewAdapter extends BaseAdapter {
 	        // TODO Auto-generated method stub
 	        return list.get(position);
 	    }
-	 
+	    
 	    @Override
 	    public long getItemId(int position) {
 	        // TODO Auto-generated method stub
