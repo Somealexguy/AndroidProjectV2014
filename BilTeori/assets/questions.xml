@@ -416,10 +416,10 @@
         <formulation isImage="vikeplikt">
 			Hvem har vikeplikt ifølge dette skiltet?
         </formulation>
-        <alternative isCorrect="true">
+        <alternative>
             Møtende trafikk har vikeplikt.
         </alternative>
-        <alternative>
+        <alternative  isCorrect="true">
             Du har vikeplikt.
         </alternative>
         <alternative>

@@ -54,8 +54,9 @@ public class ExamOneActivity extends Activity implements IExam {
 	private ExamTimer timer =null;
 	private FileWriter errorWriter= new FileWriter(Constant.WRITE_ERROR);
 	private Context context=null;
-	private NotificationExam test = new NotificationExam();
+	private NotificationExam notification = new NotificationExam();
 	private boolean inThisActivity= true;
+	private boolean isNotificationRunning=false;
 	/// <summary>
     /// Gets the filestream from the input file.
     /// </summary>
@@ -125,7 +126,8 @@ public class ExamOneActivity extends Activity implements IExam {
 		super.onPause();
 		Log.w("myApp","Paused");
 		if(inThisActivity){
-			test.startInForeground(context);
+			notification.startInForeground(context);
+			isNotificationRunning=true;
 		}
 		
 	}
@@ -137,6 +139,10 @@ public class ExamOneActivity extends Activity implements IExam {
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.w("myApp","Resumed");
+		if(isNotificationRunning){
+		notification.cancleNotification(notification.NOTIFICATION_ID);
+		}
+		isNotificationRunning=false;
 		if(!allQuestions.isEmpty()){	
 			newExam();
 		}else{

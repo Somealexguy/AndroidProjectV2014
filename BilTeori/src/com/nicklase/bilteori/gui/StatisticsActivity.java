@@ -15,7 +15,9 @@ import com.nicklase.bilteori.logic.StatisticsListViewAdapter;
 
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -91,12 +93,43 @@ private void setUp(){
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			new DeleteStatisticsFile().execute();
-			//adapter.clear();
-			((BaseAdapter) listview.getAdapter()).notifyDataSetChanged();
-			
+			showAlertBox();
 		}
 	});
+}
+
+private void showAlertBox(){
+	AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+	 
+    // Setting Dialog Title
+    alertDialog.setTitle("Bekreft sletting av data.");
+
+    // Setting Dialog Message
+    alertDialog.setMessage("Er du sikker på at du vil slette all brukerdata?");
+
+    // Setting Icon to Dialog
+    alertDialog.setIcon(R.drawable.forbudsskilt);
+
+    // Setting Positive "Yes" Button
+    alertDialog.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog,int which) {
+        	new DeleteStatisticsFile().execute();
+			//allStatistics.clear();
+			((BaseAdapter) listview.getAdapter()).notifyDataSetChanged();
+			
+        }
+    });
+
+    // Setting Negative "NO" Button
+    alertDialog.setNegativeButton("Nei", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+        // Write your code here to invoke NO event
+        dialog.cancel();
+        }
+    });
+
+    // Showing Alert Message
+    alertDialog.show();
 }
 	/**
 	 * A placeholder fragment containing a simple view.

@@ -14,10 +14,11 @@ import android.view.View;
 
 //not in use yet
 public class NotificationExam {
-	
-	private int NOTIFICATION_ID = 1;
+	private Context context;
+	public final int NOTIFICATION_ID = 1;
 	public void startInForeground(Context context)
-	{
+	{	
+		this.context=context;
 		NotificationCompat.Builder mBuilder =
 		        new NotificationCompat.Builder(context)
 		        .setSmallIcon(R.drawable.ic_launcher)
@@ -36,5 +37,12 @@ public class NotificationExam {
 		NotificationManager mNotificationManager =
 		    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 		// mId allows you to update the notification later on.
-		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());	}
+		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());	
+		}
+	public void cancleNotification(int id){
+		NotificationManager mNotificationManager = (NotificationManager) this.context.getSystemService(Context.NOTIFICATION_SERVICE);
+		mNotificationManager.cancel(id);
+		
+	}
+
 }
