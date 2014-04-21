@@ -35,6 +35,8 @@ import com.nicklase.bilteori.logic.FileWriter;
 import com.nicklase.bilteori.logic.NotificationExam;
 import com.nicklase.bilteori.logic.PullParser;
 import com.nicklase.bilteori.logic.Question;
+import com.nicklase.bilteori.logic.Sounds;
+import com.nicklase.bilteori.logic.Vibration;
 import com.nicklase.bilteori.util.SystemUiHider;
 
 public class ExamOneActivity extends Activity implements IExam {
@@ -246,7 +248,8 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
 			@Override
 			public void onClick(View v) {
-				vibrate();
+				Vibration.shortVibrate(context);
+				Sounds.playFinishSound(context);
 				deliverResult();
 			}
 		}); 
@@ -477,13 +480,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
         
 
     };
-    /// <summary>
-    /// Makes the phone vibrate.
-    /// </summary>
-    public void vibrate(){
-    	  Vibrator vibs = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-	    	 vibs.vibrate(200);
-      }
+
  
   /// <summary>
     /// This method reset the exam.

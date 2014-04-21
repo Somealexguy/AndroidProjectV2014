@@ -61,14 +61,45 @@ public class TakePictureActivity extends Activity {
 		}
 	}
 	
+	private void settings(){
+		 Intent intent = new Intent(com.nicklase.bilteori.gui.TakePictureActivity.this, com.nicklase.bilteori.gui.SettingsActivity.class);
+   	 startActivity(intent);
+	}
+	
+	private void startTeori(){
+		 Intent intent = new Intent(com.nicklase.bilteori.gui.TakePictureActivity.this, com.nicklase.bilteori.gui.ExamOneActivity.class);
+  	 startActivity(intent);
+	}
+
+	//Fyller actionbar i layout
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.take_picture, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	
+	/// <summary>
+	///   When one option item is selected.
+	/// </summary>
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
 		
-		
+		switch (item.getItemId()){
+		case R.id.action_settings:
+			settings();
+			break;
+			
+		case R.id.action_examOne:
+			startTeori();
+			break;
 
+
+		}
+		return false;
+		//super.onOptionsItemSelected(item);
+		
 	}
 	/// <summary>
     /// Starts the activity to take picture.
@@ -119,25 +150,6 @@ private boolean hasDefualtCameraApp(String action){
 /// </summary>
 private boolean hasCamera(){
     return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-}
-/// <summary>
-///   When one option item is selected.
-/// </summary>
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			// This ID represents the Home or Up button. In the case of this
-			// activity, the Up button is shown. Use NavUtils to allow users
-			// to navigate up one level in the application structure. For
-			// more details, see the Navigation pattern on Android Design:
-			//
-			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-			//
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+}	
 
 }

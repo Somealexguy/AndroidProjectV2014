@@ -25,5 +25,9 @@
     <string name="btn_takePicture">Ta bildet!</string>
     <string name="helperTextPicture">Øv deg på å ta bildet til sertifikatet!</string>
     <string name="noCamera">Du har ikke gyldig kamerainnstillinger</string>
-        <string name="btn_deleteStat">Slett Data</string>
+    <string name="btn_deleteStat">Slett Data</string>
+    <string name="title_activity_one_widget">Widget</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_teori">Teoriprøve</string>
+
 </resources>

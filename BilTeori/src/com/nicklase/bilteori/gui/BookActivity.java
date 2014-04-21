@@ -8,6 +8,7 @@ import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorListenerAdapter;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -73,5 +74,42 @@ public class BookActivity extends FragmentActivity
 	}
 		
 		
+	private void settings(){
+		 Intent intent = new Intent(com.nicklase.bilteori.gui.BookActivity.this, com.nicklase.bilteori.gui.SettingsActivity.class);
+   	 startActivity(intent);
+	}
 	
+	private void startTeori(){
+		 Intent intent = new Intent(com.nicklase.bilteori.gui.BookActivity.this, com.nicklase.bilteori.gui.ExamOneActivity.class);
+  	 startActivity(intent);
+	}
+
+	//Fyller actionbar i layout
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	
+	//Hva som skjer når du velger settings på actionbar
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		
+		switch (item.getItemId()){
+		case R.id.action_settings:
+			settings();
+			break;
+			
+		case R.id.action_examOne:
+			startTeori();
+			break;
+
+
+		}
+		return false;
+		//super.onOptionsItemSelected(item);
+		
+	}
 }

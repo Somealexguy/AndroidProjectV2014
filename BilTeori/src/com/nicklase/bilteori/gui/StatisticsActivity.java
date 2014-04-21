@@ -18,6 +18,7 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -52,27 +53,46 @@ private ListView listview;
 		}		
 		myToast=new Toast(this);
 	}
+	private void settings(){
+		 Intent intent = new Intent(com.nicklase.bilteori.gui.StatisticsActivity.this, com.nicklase.bilteori.gui.SettingsActivity.class);
+   	 startActivity(intent);
+	}
+	
+	private void startTeori(){
+		 Intent intent = new Intent(com.nicklase.bilteori.gui.StatisticsActivity.this, com.nicklase.bilteori.gui.ExamOneActivity.class);
+  	 startActivity(intent);
+	}
 
+	//Fyller actionbar i layout
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.statistics, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	
+	//Hva som skjer når du velger settings på actionbar
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		
+		switch (item.getItemId()){
+		case R.id.action_settings:
+			settings();
+			break;
+			
+		case R.id.action_examOne:
+			startTeori();
+			break;
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+
 		}
-		return super.onOptionsItemSelected(item);
+		return false;
+		//super.onOptionsItemSelected(item);
+		
 	}
-	@Override
+
+		@Override
 		protected void onPostCreate(Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
 			super.onPostCreate(savedInstanceState);

@@ -17,7 +17,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!--
          The following two permissions are not required to use
-	     Google Maps Android API v2, but are recommended.
+	     Google Maps Android API v2, but are recommended.
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -60,7 +60,7 @@
             android:name="com.nicklase.bilteori.gui.BookActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_book"
-            android:parentActivityName="com.nicklase.bilteori.gui.MainActivity">
+            android:parentActivityName="com.nicklase.bilteori.gui.MainActivity" >
         </activity>
         <activity
             android:name="com.nicklase.bilteori.gui.ExamOneActivity"
@@ -79,8 +79,9 @@
             android:name="com.nicklase.bilteori.gui.SettingsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="com.nicklase.bilteori.gui.MainActivity"
-            android:theme="@style/FullscreenTheme" >
+            android:parentActivityName="com.nicklase.bilteori.gui.MainActivity" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nicklase.bilteori.gui.MainActivity"  />
         </activity>
         <activity
             android:name="com.nicklase.bilteori.gui.TakePictureActivity"
@@ -102,13 +103,28 @@
         </activity>
         <activity
             android:name="com.nicklase.bilteori.gui.StatisticsActivity"
-            android:label="@string/title_activity_statistics"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_statistics"
             android:parentActivityName="com.nicklase.bilteori.gui.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nicklase.bilteori.gui.MainActivity" />
         </activity>
+        <activity
+            android:name=".WidgetConfig"
+            android:label="@string/title_activity_one_widget" >
+            <intent-filter >
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+          <receiver android:icon="@drawable/ic_launcher" android:name="com.nicklase.bilteori.logic.MyWidgetProvider" android:label="En bilteori widget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/one_widget" />
+        </receiver>
     </application>
 
 </manifest>

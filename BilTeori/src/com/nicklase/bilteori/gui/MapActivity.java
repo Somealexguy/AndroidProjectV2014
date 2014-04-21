@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Document;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.Html;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
@@ -160,6 +162,44 @@ public void onConnectionFailed(ConnectionResult arg0) {
 @Override
 public void onDisconnected() {
 	Toast.makeText(this, "Disconnected", Toast.LENGTH_LONG).show();
+}
+private void settings(){
+	 Intent intent = new Intent(com.nicklase.bilteori.gui.MapActivity.this, com.nicklase.bilteori.gui.SettingsActivity.class);
+	 startActivity(intent);
+}
+
+private void startTeori(){
+	 Intent intent = new Intent(com.nicklase.bilteori.gui.MapActivity.this, com.nicklase.bilteori.gui.ExamOneActivity.class);
+	 startActivity(intent);
+}
+
+//Fyller actionbar i layout
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+	// Inflate the menu; this adds items to the action bar if it is present.
+	getMenuInflater().inflate(R.menu.main, menu);
+	return true;
+}
+
+
+//Hva som skjer når du velger settings på actionbar
+@Override
+public boolean onOptionsItemSelected(MenuItem item){
+	
+	switch (item.getItemId()){
+	case R.id.action_settings:
+		settings();
+		break;
+		
+	case R.id.action_examOne:
+		startTeori();
+		break;
+
+
+	}
+	return false;
+	//super.onOptionsItemSelected(item);
+	
 }
 
 } 
