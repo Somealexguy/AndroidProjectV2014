@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 //		Intent intent = new Intent(com.nicklase.bilteori.gui.MainActivity.this,com.nicklase.bilteori.gui.BookActivity.class);
 //   	 	startActivity(intent);
 //	}
-	
+//	
 	/// <summary>
 	///   Sets listeneres to all the buttons.
 	/// </summary>

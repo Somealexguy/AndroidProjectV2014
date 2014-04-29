@@ -210,7 +210,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 	}
 	
 	/// <summary>
-    /// sets up the buttons
+    /// Sets up the buttons
     /// </summary>
 	public void setUpButtons(){
 		final Button btnPrev=(Button) findViewById(R.id.btnPrev);

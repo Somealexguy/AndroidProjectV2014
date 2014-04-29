@@ -3,29 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
 
-    	
    <PreferenceCategory android:title="Innstillinger" >
-       <EditTextPreference
-       		android:title="E-post"
-            android:summary="Skriv inn din e-post"
-            android:key="prefUserEmail"
-            android:dialogTitle="prefUserEmail"/>
         
     	 <CheckBoxPreference
             android:defaultValue="true"
             android:key="prefNotification"
             android:summary="Slå av/på notification"
-            android:title="Notifikasjon"
-             >
+            android:title="Notifikasjon">
         </CheckBoxPreference>
                 
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="prefLyd"
             android:summary="Slå av/på lyd"
-            
             android:title="Lyd/FX" >
         </CheckBoxPreference>
          
@@ -37,34 +28,15 @@
             android:title="Viberasjon" >
         </CheckBoxPreference>
     </PreferenceCategory>
-     
-    <PreferenceCategory android:title="Diverse" >        
-        <EditTextPreference
-            android:title="Anbefal en venn"
-            android:inputType="textEmailAddress"
-            android:key="sendVenn"
-            android:summary="Via e-mail"  />
-          
-                
-        <ListPreference
-            android:key="prefUpdateFrequency"
-            android:title="Tekststørrelse"
-            android:summary="Endre tekststørrelse i bokdel"
-            android:entries="@array/updateFrequency"
-            android:entryValues="@array/updateFrequencyValues"
-            />
-        
-         <PreferenceScreen
-                android:title="agaeg"
-                android:summary="jagfla"
-                android:onClick= "sendMailen">
-
-            <intent android:action="android.intent.action.VIEW"
-                    android:targetPackage="com.nicklase.bilteori"
-        			android:targetClass="com.nicklase.bilteori.logic.SendEmail" />
-
+    
+    <PreferenceCategory android:title="Diverse" > 
+        <PreferenceScreen
+            android:title="Anbefal applikasjonen"
+            android:summary="Del appen med dine venner"
+            android:key="sendAnbefalMail">
+            <intent android:action="bilteori.action.SHARE" />     
         </PreferenceScreen>
-        
+
     </PreferenceCategory>
     
 </PreferenceScreen>

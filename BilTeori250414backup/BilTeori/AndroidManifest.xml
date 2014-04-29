@@ -129,5 +129,4 @@
                 android:resource="@xml/one_widget" />
         </receiver>
     </application>
-
 </manifest>

@@ -62,6 +62,7 @@ public class MapActivity extends FragmentActivity  implements OnMapLongClickList
 	private float[] meterResult= new float[3];
 	private FileWriter errorWriter= new FileWriter(Constant.WRITE_ERROR);
 	private  boolean leftActivity = false;
+	private LocationManager locationManager;
   
 /// <summary>
 ///   Method run on create.
@@ -81,53 +82,61 @@ public class MapActivity extends FragmentActivity  implements OnMapLongClickList
    		Toast.makeText(getApplicationContext(), "Sjekk om du er tilkoblet internett", Toast.LENGTH_LONG).show();
    	}
   }
+/// <summary>
+///   Checks if the phone is connected to network.
+/// </summary>
   private boolean checkNetworkConnection(){
-	  boolean HaveConnectedWifi = false;
-	  boolean HaveConnectedMobile = false;
+	  boolean isWifiConnected = false;
+	  boolean isMobileNetworkConnected = false;
 	  boolean connection=false;
-	  ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-	  NetworkInfo[] ni = cm.getAllNetworkInfo();
-	  if ( ni != null )
+	  ConnectivityManager connectionManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+	  NetworkInfo[] networkInformation = connectionManager.getAllNetworkInfo();
+	  if ( networkInformation != null )
 	  {
-	      for (int i = 0; i < ni.length; i++) {
-	    	  if (ni[i].getType()== ConnectivityManager.TYPE_WIFI)
-		          if (ni[i].isConnectedOrConnecting())
-		              HaveConnectedWifi = true;
-		      if (ni[i].getType() == ConnectivityManager.TYPE_MOBILE)
-		          if (ni[i].isConnectedOrConnecting())
-		              HaveConnectedMobile = true;
+	      for (int i = 0; i < networkInformation.length; i++) {
+	    	  if (networkInformation[i].getType()== ConnectivityManager.TYPE_WIFI)
+		          if (networkInformation[i].isConnectedOrConnecting()){
+		        	  isWifiConnected = true;
+		        	  break;
+		          }
+		              
+		      if (networkInformation[i].getType() == ConnectivityManager.TYPE_MOBILE)
+		          if (networkInformation[i].isConnectedOrConnecting()){
+		              isMobileNetworkConnected = true;
+		              break;
+		          }
 		  }
 		}
 		
-	  if(HaveConnectedMobile||HaveConnectedWifi){
+	  if(isMobileNetworkConnected||isWifiConnected){
 		  connection=true;
 	  }
 	  return connection;
   }
+/// <summary>
+///   Checks if GPS is on and up to date.
+/// </summary>
   private boolean checkGPSService() {
-
 	    int isAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-	   
 	    if (isAvailable == ConnectionResult.SUCCESS) {
-	    	LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+	    	 locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 			if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
 	    		  return true;
 	    	}
-	      
 
 	    } else if (GooglePlayServicesUtil.isUserRecoverableError(isAvailable)) {
-
-	        Dialog dialog = GooglePlayServicesUtil.getErrorDialog(isAvailable,
-	                this, GPS_ERRORDIALOG_REQUEST);
+	        Dialog dialog = GooglePlayServicesUtil.getErrorDialog(isAvailable, this, GPS_ERRORDIALOG_REQUEST);
 	        dialog.show();
 
 	    } else {
-
-	        Toast.makeText(this, "Cant connect to service!!", Toast.LENGTH_SHORT).show();
+	        Toast.makeText(this, "Får ikke koblet til google play service!", Toast.LENGTH_SHORT).show();
 
 	    }
 	    return false;
 	}
+/// <summary>
+///   Returns true if checkNetworkConnection() and checkGPSService() returns true .
+/// </summary>
   private boolean checkConnectionStatus(){
 	  if(checkNetworkConnection() && checkGPSService()){
 		  return true;
@@ -164,6 +173,9 @@ private void setUp(){
 		setUpMarks();
 	}
 }
+/// <summary>
+///   After create method is run, this is run.
+/// </summary>
 @Override
 protected void onPostCreate(Bundle savedInstanceState) {
 	// TODO Auto-generated method stub
@@ -186,6 +198,9 @@ private void setUpMarks(){
 		addMark(station.getLatlng(),station.getStationName(),station.getInfo());
 	}
 }
+/// <summary>
+///   When you resume this activity.
+/// </summary>
 @Override
 protected void onResume() {
 	super.onResume();
@@ -200,7 +215,9 @@ protected void onResume() {
 		}
 	}
 }
-
+/// <summary>
+///   When you pause this activity.
+/// </summary>
 @Override
 protected void onPause() {
 	super.onPause();
@@ -211,6 +228,9 @@ protected void onPause() {
 		}
 	}
 }
+//<summary>
+//Run when activity is closed.
+//</summary>
 @Override
 protected void onDestroy() {
 	// TODO Auto-generated method stub
@@ -257,7 +277,6 @@ private void getDistanceInMeters(){
 /// <summary>
 ///   Finds the closest traffic station.
 /// </summary>
-
 private TrafficStation findTheClosestStation(){
 	TrafficStation theStation=null;
 	float theShortestDistance=0;
@@ -354,7 +373,9 @@ public boolean onCreateOptionsMenu(Menu menu) {
 private class drawRoute extends AsyncTask<Void, Void, Document> {
 	Document doc;
 	PolylineOptions rectLine;
-
+	/// <summary>
+	///   Code run in background out of UI thread.
+	/// </summary>
 	@Override 
 	protected Document doInBackground(Void... params) {
 		doc = mapDirection.getDocument(fromPosition, toPosition, GMapV2Direction.MODE_DRIVING);
@@ -368,14 +389,17 @@ private class drawRoute extends AsyncTask<Void, Void, Document> {
 
 		return null;
 	}
-
+	/// <summary>
+	///  When background job is finished.
+	/// </summary>
 	@Override
 	protected void onPostExecute(Document result) {
 		map.addPolyline(rectLine);
 	}
 }
-
-
+/// <summary>
+///   When a menu item is clicked run some code.
+/// </summary>
 @Override
 public boolean onOptionsItemSelected(MenuItem item){
 	
