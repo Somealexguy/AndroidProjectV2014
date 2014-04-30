@@ -14,13 +14,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class ArticleFragment extends Fragment{
-
-	
+public class ArticleFragment extends Fragment{	
 	public final static String ARG_POSITION = "position";
-	
 	int mCurrentPosition = -1;
-	
+	/// <summary>
+    /// This is run when the application is created.
+    /// </summary>
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -32,7 +31,9 @@ public class ArticleFragment extends Fragment{
 		
 		return inflater.inflate(R.layout.article_view, container, false);
 	}
-
+	/// <summary>
+    /// Recreates the instance when the application is resumed, after destroy.
+    /// </summary>
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
@@ -40,8 +41,9 @@ public class ArticleFragment extends Fragment{
 		outState.putInt(ARG_POSITION, mCurrentPosition);
 	}
 	
-	
-	
+/// <summary>
+/// This method is run when you start the fragment.
+/// </summary>
 	
 	@Override
 	public void onStart() {
@@ -58,7 +60,11 @@ public class ArticleFragment extends Fragment{
 			updateArticleView(mCurrentPosition);
 		}
 	}
+	
 
+/// <summary>
+/// Updates the article view.
+/// </summary>
 	public void updateArticleView(int position){
 		TextView article = (TextView) getActivity().findViewById(R.id.article);
 		
