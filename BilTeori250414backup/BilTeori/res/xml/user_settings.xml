@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+   <PreferenceCategory android:title="Innstillinger" >
+        
+    	 <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefNotification"
+            android:summary="Slå av/på notification"
+            android:title="Notifikasjon">
+        </CheckBoxPreference>
+                
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefLyd"
+            android:summary="Slå av/på lyd"
+            android:title="Lyd/FX" >
+        </CheckBoxPreference>
+         
+       	<CheckBoxPreference
+       	    android:id="@+id/checkBoxViberasjon"
+            android:defaultValue="true"
+            android:key="prefViberasjon"
+            android:summary="Slå av/på viberasjon"
+            android:title="Viberasjon" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Diverse" > 
+        <PreferenceScreen
+            android:title="Anbefal applikasjonen"
+            android:summary="Del appen med dine venner"
+            android:key="sendAnbefalMail">
+            <intent android:action="bilteori.action.SHARE" />     
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+    
+</PreferenceScreen>
