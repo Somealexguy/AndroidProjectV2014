@@ -12,11 +12,13 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.view.View;
 
-//not in use yet
 public class NotificationExam {
 	private Context context;
 	public final int NOTIFICATION_ID = 1;
 	public static boolean canNotification=true;
+	/// <summary>
+	///   Starts a new notification.
+	/// </summary>
 	public void startInForeground(Context context)
 	{	
 		if(canNotification){
@@ -42,6 +44,9 @@ public class NotificationExam {
 			mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());	
 			}
 		}
+	/// <summary>
+	///   Used to cancle the notification which is running.
+	/// </summary>
 	public void cancleNotification(int id){
 		NotificationManager mNotificationManager = (NotificationManager) this.context.getSystemService(Context.NOTIFICATION_SERVICE);
 		mNotificationManager.cancel(id);

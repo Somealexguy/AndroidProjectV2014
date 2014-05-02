@@ -17,6 +17,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -36,12 +37,16 @@ import android.widget.Toast;
 import android.os.Build;
 
 public class StatisticsActivity extends Activity {
-private ArrayList<Result> allStatistics = new ArrayList<Result>(); 
-private ArrayList<HashMap<String, String>> list;
-private ReadFromStatisticsFile task=null;
-private StatisticsListViewAdapter adapter=null;
-private Toast myToast;
-private ListView listview;
+	private ArrayList<Result> allStatistics = new ArrayList<Result>(); 
+	private ArrayList<HashMap<String, String>> list;
+	private ReadFromStatisticsFile task=null;
+	private StatisticsListViewAdapter adapter=null;
+	private Toast myToast;
+	private ListView listview;
+	protected Context statisticsContext;
+	/// <summary>
+	///  This code is run when the activity is created.
+	/// </summary>
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,23 +54,24 @@ private ListView listview;
 
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
-					.add(R.id.container, new StatisticsFragment()).commit();
+			.add(R.id.container, new StatisticsFragment()).commit();
 		}		
+		statisticsContext=getApplicationContext();
 		myToast=new Toast(this);
 	}
 	/// <summary>
 	///   Starts the settings activity.
 	/// </summary>
 	private void changeToSettingsActivtiy(){
-		 Intent intent = new Intent(com.nicklase.bilteori.gui.StatisticsActivity.this, com.nicklase.bilteori.gui.SettingsActivity.class);
-   	 startActivity(intent);
+		Intent intent = new Intent(com.nicklase.bilteori.gui.StatisticsActivity.this, com.nicklase.bilteori.gui.SettingsActivity.class);
+		startActivity(intent);
 	}
-		/// <summary>
-		///   Starts the exam activity.
-		/// </summary>
+	/// <summary>
+	///   Starts the exam activity.
+	/// </summary>
 	private void changeToExamActivity(){
-		 Intent intent = new Intent(com.nicklase.bilteori.gui.StatisticsActivity.this, com.nicklase.bilteori.gui.ExamOneActivity.class);
-  	 startActivity(intent);
+		Intent intent = new Intent(com.nicklase.bilteori.gui.StatisticsActivity.this, com.nicklase.bilteori.gui.ExamOneActivity.class);
+		startActivity(intent);
 	}
 
 	/// <summary>
@@ -77,19 +83,19 @@ private ListView listview;
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
-	
+
+
 	/// <summary>
 	///   When a menu item is clicked run some code.
 	/// </summary>
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
-		
+
 		switch (item.getItemId()){
 		case R.id.action_settings:
 			changeToSettingsActivtiy();
 			break;
-			
+
 		case R.id.action_examOne:
 			changeToExamActivity();
 			break;
@@ -98,165 +104,165 @@ private ListView listview;
 		}
 		return false;
 		//super.onOptionsItemSelected(item);
-		
+
 	}
 
-		@Override
-		protected void onPostCreate(Bundle savedInstanceState) {
-			// TODO Auto-generated method stub
-			super.onPostCreate(savedInstanceState);
-			task= new ReadFromStatisticsFile();
-			task.execute();
-			setUp();
-			
-		}
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onPostCreate(savedInstanceState);
+		task= new ReadFromStatisticsFile();
+		task.execute();
+		setUp();
+
+	}
 	private void setUpListItem(){
 		listview = (ListView) findViewById(R.id.listViewEachResult);
-        adapter = new StatisticsListViewAdapter(this, list);
-        listview.setAdapter(adapter);
+		adapter = new StatisticsListViewAdapter(this, list);
+		listview.setAdapter(adapter);
 	}
-private void setUp(){
-	Button delete = (Button) findViewById(R.id.btnDeleteData);
-	delete.setOnClickListener(new OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			showAlertBox();
-		}
-	});
-}
+	private void setUp(){
+		Button delete = (Button) findViewById(R.id.btnDeleteData);
+		delete.setOnClickListener(new OnClickListener() {
 
-private void showAlertBox(){
-	AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-	 
-    // Setting Dialog Title
-    alertDialog.setTitle("Bekreft sletting av data.");
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				showAlertBox();
+			}
+		});
+	}
 
-    // Setting Dialog Message
-    alertDialog.setMessage("Er du sikker på at du vil slette all brukerdata?");
+	private void showAlertBox(){
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
-    // Setting Icon to Dialog
-    alertDialog.setIcon(R.drawable.forbudsskilt);
+		// Setting Dialog Title
+		alertDialog.setTitle("Bekreft sletting av data.");
 
-    // Setting Positive "Yes" Button
-    alertDialog.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
-        public void onClick(DialogInterface dialog,int which) {
-        	new DeleteStatisticsFile().execute();
-        		allStatistics.clear();
-        	 ((StatisticsListViewAdapter) listview.getAdapter()).clearList();
-			 ((BaseAdapter) listview.getAdapter()).notifyDataSetChanged();
-			
-			
-        }
-    });
+		// Setting Dialog Message
+		alertDialog.setMessage("Er du sikker på at du vil slette all brukerdata?");
 
-    // Setting Negative "NO" Button
-    alertDialog.setNegativeButton("Nei", new DialogInterface.OnClickListener() {
-        public void onClick(DialogInterface dialog, int which) {
-        // Write your code here to invoke NO event
-        dialog.cancel();
-        }
-    });
+		// Setting Icon to Dialog
+		alertDialog.setIcon(R.drawable.forbudsskilt);
 
-    // Showing Alert Message
-    alertDialog.show();
-}
+		// Setting Positive "Yes" Button
+		alertDialog.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int which) {
+				new DeleteStatisticsFile().execute();
+				allStatistics.clear();
+				((StatisticsListViewAdapter) listview.getAdapter()).clearList();
+				((BaseAdapter) listview.getAdapter()).notifyDataSetChanged();
+
+
+			}
+		});
+
+		// Setting Negative "NO" Button
+		alertDialog.setNegativeButton("Nei", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				// Write your code here to invoke NO event
+				dialog.cancel();
+			}
+		});
+
+		// Showing Alert Message
+		alertDialog.show();
+	}
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
 	public static class StatisticsFragment extends Fragment {
 
-			public StatisticsFragment() {
-			}
-	
-			@Override
-			public View onCreateView(LayoutInflater inflater, ViewGroup container,
-					Bundle savedInstanceState) {
-				View rootView = inflater.inflate(R.layout.fragment_statistics,
-						container, false);
-				return rootView;
-			}
+		public StatisticsFragment() {
 		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_statistics,
+					container, false);
+			return rootView;
+		}
+	}
 	private class DeleteStatisticsFile extends AsyncTask<Void, Void, String> {
-		
-	   @Override
-	   protected String doInBackground(Void... params) {
-	         //Get All Route values
-		   String response=null;
-	             MyFileReader newReader= new MyFileReader();
-	             if(newReader.deleteStatistics()=="ok")
-	            	 response="ok";
-	             
-	             return response;
-	   }
-	   @Override
+
+		@Override
+		protected String doInBackground(Void... params) {
+			//Get All Route values
+			String response=null;
+			MyFileReader newReader= new MyFileReader(statisticsContext);
+			if(newReader.deleteStatistics()=="ok")
+				response="ok";
+
+			return response;
+		}
+		@Override
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			if(result=="ok"){
-				myToast.makeText(getApplicationContext(), "Dataene ble slettet.", Toast.LENGTH_SHORT).show();
-				
+				myToast.makeText(statisticsContext, "Dataene ble slettet.", Toast.LENGTH_SHORT).show();
+
 			}else{
-				myToast.makeText(getApplicationContext(), "Dataene ble ikke slettet.", Toast.LENGTH_SHORT).show();
+				myToast.makeText(statisticsContext, "Dataene ble ikke slettet.", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
-private class ReadFromStatisticsFile extends AsyncTask<Void, Void, String> {
+	private class ReadFromStatisticsFile extends AsyncTask<Void, Void, String> {
 		String result;
-	   @Override
-	   protected String doInBackground(Void... params) {
-	         //Get All Route values
-	             MyFileReader newReader= new MyFileReader();
-	             
-	           result=  newReader.readStatistics();
-	             
-	         return result;
-	
-	   }
-	
-	   @Override
-	   protected void onPostExecute(String result) {
-		   String[] theResult=result.split(";");
-		   if(result!=" " || result!=null){
-			   for (int i = 0; i < theResult.length; i++) {
-				   
-				  String[] eachResult= theResult[i].split("¤");
-				  if(eachResult.length==2){
-					   Result r = new Result(eachResult[0],eachResult[1]);
+		@Override
+		protected String doInBackground(Void... params) {
+			//Get All Route values
+			MyFileReader newReader= new MyFileReader(statisticsContext);
+
+			result=  newReader.readStatistics();
+
+			return result;
+
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			String[] theResult=result.split(";");
+			if(result!=" " || result!=null){
+				for (int i = 0; i < theResult.length; i++) {
+
+					String[] eachResult= theResult[i].split("¤");
+					if(eachResult.length==2){
+						Result r = new Result(eachResult[0],eachResult[1]);
 						allStatistics.add(r);
-				  }
+					}
 				}
-			   populateList();
-			   setUpListItem();
-		   }
+				populateList();
+				setUpListItem();
+			}
 		}
 	}
 	private void populateList(){
-	       list = new ArrayList<HashMap<String,String>>();
-	  	 
-	  	    	HashMap<String, String> temp1 = new HashMap<String, String>();
-	  	    	temp1.put(Constant.FIRST_COLUMN, "Forsøk: ");
-	              temp1.put(Constant.SECOND_COLUMN,"Antall poeng: ");
-	              temp1.put(Constant.THIRD_COLUMN, "Tid brukt:");
-	              list.add(temp1);
-	                   
-	  	        for(int i=0;i<allStatistics.size();i++){
-	  	        	HashMap temp = new HashMap();
-	  	        	int id=i+1;
-	  	        	temp.put(Constant.FIRST_COLUMN, id+"");
-	  	            temp.put(Constant.SECOND_COLUMN, allStatistics.get(i).getPoints());
-	  	            temp.put(Constant.THIRD_COLUMN, allStatistics.get(i).getTime());
-	  	            list.add(temp);
-	  	        } 
+		list = new ArrayList<HashMap<String,String>>();
+
+		HashMap<String, String> temp1 = new HashMap<String, String>();
+		temp1.put(Constant.FIRST_COLUMN, "Forsøk: ");
+		temp1.put(Constant.SECOND_COLUMN,"Antall poeng: ");
+		temp1.put(Constant.THIRD_COLUMN, "Tid brukt:");
+		list.add(temp1);
+
+		for(int i=0;i<allStatistics.size();i++){
+			HashMap temp = new HashMap();
+			int id=i+1;
+			temp.put(Constant.FIRST_COLUMN, id+"");
+			temp.put(Constant.SECOND_COLUMN, allStatistics.get(i).getPoints());
+			temp.put(Constant.THIRD_COLUMN, allStatistics.get(i).getTime());
+			list.add(temp);
+		} 
 	}
 
 	@Override
-		public void onBackPressed() {
-			// TODO Auto-generated method stub
-			super.onBackPressed();
-			allStatistics.clear();
-			finish();
-			
-		}
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		allStatistics.clear();
+		finish();
+
+	}
 }

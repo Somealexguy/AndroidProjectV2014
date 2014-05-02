@@ -33,8 +33,8 @@ public class TakePictureActivity extends Activity {
 	Bitmap bitMap=null;
 
 	/// <summary>
-    /// This method is run on create.
-    /// </summary>
+	/// This method is run on create.
+	/// </summary>
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,18 +42,18 @@ public class TakePictureActivity extends Activity {
 		// Show the Up button in the action bar.
 		setUpActionBar();
 		final Button buttonTakePicture = (Button) findViewById(R.id.btnTakePicture);
-		
+
 		buttonTakePicture.setOnClickListener(new View.OnClickListener() {
-	         public void onClick(View v) {
-	             // Perform action on click
-	        	takePicture();
-	         }
-	     });
+			public void onClick(View v) {
+				// Perform action on click
+				takePicture();
+			}
+		});
 	}
 
 	/// <summary>
-    /// Sets up the action bar if the api level is greater or equal to HONEYCOMB.
-    /// </summary>
+	/// Sets up the action bar if the api level is greater or equal to HONEYCOMB.
+	/// </summary>
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void setUpActionBar() {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -64,15 +64,15 @@ public class TakePictureActivity extends Activity {
 	///   Starts the settings activity.
 	/// </summary>
 	private void changeToSettingsActivity(){
-		 Intent intent = new Intent(com.nicklase.bilteori.gui.TakePictureActivity.this, com.nicklase.bilteori.gui.SettingsActivity.class);
-   	 startActivity(intent);
+		Intent intent = new Intent(com.nicklase.bilteori.gui.TakePictureActivity.this, com.nicklase.bilteori.gui.SettingsActivity.class);
+		startActivity(intent);
 	}
 	/// <summary>
 	///   Starts the exam activity.
 	/// </summary>
 	private void changeToExamActivity(){
-		 Intent intent = new Intent(com.nicklase.bilteori.gui.TakePictureActivity.this, com.nicklase.bilteori.gui.ExamOneActivity.class);
-  	 startActivity(intent);
+		Intent intent = new Intent(com.nicklase.bilteori.gui.TakePictureActivity.this, com.nicklase.bilteori.gui.ExamOneActivity.class);
+		startActivity(intent);
 	}
 
 	/// <summary>
@@ -84,19 +84,19 @@ public class TakePictureActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
-	
+
+
 	/// <summary>
 	///   When a menu item is clicked run some code.
 	/// </summary>
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
-		
+
 		switch (item.getItemId()){
 		case R.id.action_settings:
 			changeToSettingsActivity();
 			break;
-			
+
 		case R.id.action_examOne:
 			changeToExamActivity();
 			break;
@@ -105,57 +105,57 @@ public class TakePictureActivity extends Activity {
 		}
 		return false;
 		//super.onOptionsItemSelected(item);
-		
+
 	}
 	/// <summary>
-    /// Starts the activity to take picture.
-    /// </summary>
+	/// Starts the activity to take picture.
+	/// </summary>
 	private void takePicture(){
 		if(hasCamera()&& hasDefualtCameraApp(MediaStore.ACTION_IMAGE_CAPTURE)){
-	    // create intent with ACTION_IMAGE_CAPTURE action 
-	    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+			// create intent with ACTION_IMAGE_CAPTURE action 
+			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-	    // start camera activity
-	    startActivityForResult(intent, MEDIA_TYPE_IMAGE);
+			// start camera activity
+			startActivityForResult(intent, MEDIA_TYPE_IMAGE);
 		}else{
 			TextView header= (TextView)findViewById(R.id.textViewHeaderPicture);
 			header.setText("Det er noe galt med kamera funksjonen.");
 		}
 
 	} 
-	
+
 	/// <summary>
-    /// Gets the result from the last activity closed.
-    /// </summary>
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-ImageView img = (ImageView) findViewById(R.id.imageView1);
-    if (requestCode == MEDIA_TYPE_IMAGE && resultCode== RESULT_OK && intent != null){
-        // get bundle
-        Bundle extras = intent.getExtras();
+	/// Gets the result from the last activity closed.
+	/// </summary>
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		ImageView img = (ImageView) findViewById(R.id.imageView1);
+		if (requestCode == MEDIA_TYPE_IMAGE && resultCode== RESULT_OK && intent != null){
+			// get bundle
+			Bundle extras = intent.getExtras();
 
-        // get bitmap
-        bitMap = (Bitmap) extras.get("data");
-        img.setImageBitmap(bitMap);
+			// get bitmap
+			bitMap = (Bitmap) extras.get("data");
+			img.setImageBitmap(bitMap);
 
-    }
-}
-/// <summary>
-///  Method to check you have Camera Apps
-/// </summary>
-private boolean hasDefualtCameraApp(String action){
-    final PackageManager packageManager = getPackageManager();
-    final Intent intent = new Intent(action);
-    List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+		}
+	}
+	/// <summary>
+	///  Method to check you have Camera Apps
+	/// </summary>
+	private boolean hasDefualtCameraApp(String action){
+		final PackageManager packageManager = getPackageManager();
+		final Intent intent = new Intent(action);
+		List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
 
-    return list.size() > 0;
+		return list.size() > 0;
 
-}
-/// <summary>
-///   Method to check if you have a Camera.
-/// </summary>
-private boolean hasCamera(){
-    return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-}	
+	}
+	/// <summary>
+	///   Method to check if you have a Camera.
+	/// </summary>
+	private boolean hasCamera(){
+		return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
+	}	
 
 }

@@ -10,13 +10,15 @@ import android.util.Log;
 import android.view.View;
 
 public class Email {
-	
+
 	private String fromEmail;
 	private String[] toEmail;
 	private String subject;
 	private String textMessage;
 	private String[] headers;
-	
+	/// <summary>
+	/// Constructor for email class
+	/// </summary>
 	public Email( String[] toEmail, String subject,
 			String textMessage) {
 		super();
@@ -24,11 +26,17 @@ public class Email {
 		this.subject = subject;
 		this.textMessage = textMessage;
 	}
+	/// <summary>
+	/// Constructor for email class
+	/// </summary>
 	public Email(String[] toEmail, String subject) {
 		super();
 		this.toEmail = toEmail;
 		this.subject = subject;
 	}
+	/// <summary>
+	/// Constructor for email class
+	/// </summary>
 	public Email(String subject,
 			String textMessage) {
 		super();
@@ -64,7 +72,7 @@ public class Email {
 	public void setHeaders(String[] headers) {
 		this.headers = headers;
 	}
-	
-	
+
+
 
 }

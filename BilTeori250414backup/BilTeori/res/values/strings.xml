@@ -9,7 +9,7 @@
     <string name="btn_exam_one">Teoriprøve</string>
     <string name="examTwo">Eksamen2</string>
     <string name="btn_take_picture">Ta bilde til sertifikatet!</string>
-    <string name="btn_get_directions">Vis vei til trafikkskole</string>
+    <string name="btn_get_directions">Vis vei til trafikkstasjon</string>
     <string name="title_activity_book">Les boken her.</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

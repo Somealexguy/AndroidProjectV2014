@@ -8,13 +8,15 @@
     android:background="@drawable/grey_fabric_bg"
     >
 
-    <TextView
+     <ImageView
+        android:contentDescription="@+id/Logobilde"
         android:id="@+id/textViewHeaderPicture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="BILTEORILOGO"
-        android:textColor="#FFFFFFFF"
-        android:paddingBottom="35dp" />
+        android:layout_width="198dp"
+        android:layout_height="73dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/logomeny"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp" />
     
     <Button
         android:id="@+id/btn_exam_one"

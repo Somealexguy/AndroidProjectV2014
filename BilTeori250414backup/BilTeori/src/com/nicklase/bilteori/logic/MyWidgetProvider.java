@@ -21,61 +21,67 @@ import android.widget.Toast;
 
 public class MyWidgetProvider extends AppWidgetProvider {
 
-	  private static final String ACTION_CLICK = "ACTION_CLICK";
-	  private FileWriter errorWriter= new FileWriter(Constant.WRITE_ERROR);
-	  @Override
-	  public void onUpdate(Context context, AppWidgetManager appWidgetManager,
-	      int[] appWidgetIds) {
+	private static final String ACTION_CLICK = "ACTION_CLICK";
+	private FileWriter errorWriter= new FileWriter(Constant.WRITE_ERROR);
 
-	    // Get all ids
-	    ComponentName thisWidget = new ComponentName(context,
-	    		com.nicklase.bilteori.logic.MyWidgetProvider.class);
-	    int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
-	    for (int widgetId : allWidgetIds) {
-	    	String[] images={"feltforfart","gatetun","parkeringssone","vikeplikt","vegskulder","slash60sone","motortrafikkvei"};
-	    	
-	      // create some random data
-	      int number = (new Random().nextInt(images.length));
-	      
-	      
-	      RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
-	          R.layout.widget_layout);
-	      
-	      
-	      remoteViews.setImageViewResource(R.id.imageViewSigns, getImageReousrce(context, images[number]));
-	      Log.w("WidgetExample", String.valueOf(number));
-	      // Set the text
-	      remoteViews.setTextViewText(R.id.textViewUpdate, String.valueOf(number));
-	      remoteViews.setTextViewText(R.id.textViewNavnPaSkilt, "navn:"+images[number]);
+	@Override
+	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
+			int[] appWidgetIds) {
 
-	      // Register an onClickListener
-	      Intent intent = new Intent(context, com.nicklase.bilteori.logic.MyWidgetProvider.class);
+		// Get all ids
+		ComponentName thisWidget = new ComponentName(context,
+				com.nicklase.bilteori.logic.MyWidgetProvider.class);
+		int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+		for (int widgetId : allWidgetIds) {
+			String[] images={"feltforfart","gatetun","parkeringssone","vikeplikt","vegskulder","slash60sone","motortrafikkvei"};
 
-	      intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-	      intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+			// create some random data
+			int number = (new Random().nextInt(images.length));
 
-	      PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
-	          0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-	      remoteViews.setOnClickPendingIntent(R.id.imageViewSigns, pendingIntent);
-	      appWidgetManager.updateAppWidget(widgetId, remoteViews);
-	    }
-	  }
-	  
-	  private int getImageReousrce(Context context, String imagepath){
-		  int imageResource=0;
-		   try{
-		   imageResource = context.getResources().getIdentifier(imagepath, "drawable", context.getPackageName());
-		   }catch( Resources.NotFoundException e){
-			   e.printStackTrace();
-			 errorWriter.saveDataToFile(e.toString(), context);
-		   }
-		   
-		  return  imageResource;
-	  }
-	  @Override
+
+			RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
+					R.layout.widget_layout);
+
+
+			remoteViews.setImageViewResource(R.id.imageViewSigns, getImageResource(context, images[number]));
+			Log.w("WidgetExample", String.valueOf(number));
+			// Set the text
+			remoteViews.setTextViewText(R.id.textViewUpdate, String.valueOf(number));
+			remoteViews.setTextViewText(R.id.textViewNavnPaSkilt, "navn:"+images[number]);
+
+			// Register an onClickListener
+			Intent intent = new Intent(context, com.nicklase.bilteori.logic.MyWidgetProvider.class);
+
+			intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+			intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+
+			PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+					0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+			remoteViews.setOnClickPendingIntent(R.id.imageViewSigns, pendingIntent);
+			appWidgetManager.updateAppWidget(widgetId, remoteViews);
+		}
+	}
+	/// <summary>
+	///   Gets the image resource.
+	/// </summary>
+	private int getImageResource(Context context, String imagepath){
+		int imageResource=0;
+		try{
+			imageResource = context.getResources().getIdentifier(imagepath, "drawable", context.getPackageName());
+		}catch( Resources.NotFoundException e){
+			e.printStackTrace();
+			errorWriter.saveDataToFile(e.toString(), context);
+		}
+
+		return  imageResource;
+	}
+	/// <summary>
+	///   When widget is deleted.
+	/// </summary>
+	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
 		// TODO Auto-generated method stub
 		super.onDeleted(context, appWidgetIds);
 		Toast.makeText(context, "Bilteori widget slettet", Toast.LENGTH_SHORT).show();
-	  }
-	} 
+	}
+} 

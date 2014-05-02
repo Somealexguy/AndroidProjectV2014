@@ -14,29 +14,29 @@ import android.widget.ListView;
 public class HeadlinesFragment extends ListFragment{
 
 	OnHeadlineSelectedListener mCallback;
-	
+
 	public interface OnHeadlineSelectedListener{
-		
+
 		public void onArticleSelected(int position);
 	}
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
-		
+
+
 		super.onCreate(savedInstanceState);
 		int layout = android.R.layout.simple_list_item_1;
-		
-		setListAdapter(new ArrayAdapter<String>(getActivity(), layout, BokTekst.Headlines));
-		
-	
+
+		setListAdapter(new ArrayAdapter<String>(getActivity(), layout, BookText.Headlines));
+
+
 	}
-	
+
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		
+
 		try{
 			mCallback = (OnHeadlineSelectedListener) activity;	
 		}
@@ -50,9 +50,9 @@ public class HeadlinesFragment extends ListFragment{
 
 	@Override
 	public void onStart() {
-		
+
 		super.onStart();
-		
+
 		if(getFragmentManager().findFragmentById(R.id.article_fragment) != null){
 			getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		}
@@ -62,5 +62,5 @@ public class HeadlinesFragment extends ListFragment{
 		mCallback.onArticleSelected(position);
 		getListView().setItemChecked(position, true);
 	}
-	
+
 }

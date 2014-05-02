@@ -40,13 +40,13 @@ import com.nicklase.bilteori.logic.Vibration;
 import com.nicklase.bilteori.util.SystemUiHider;
 
 public class ExamOneActivity extends Activity implements IExam {
-	
+
 	private static List<Question> allQuestions = new ArrayList<Question>();
-	 private static List<Question> questions = new ArrayList<Question>();
-	 //bruker hash table isteden for array for å vise at vi kan bruke det.
-	 //søking i en hashtable gjøres også i konstant tid og gjøres kjapperen enn i en arraylist.
+	private static List<Question> questions = new ArrayList<Question>();
+	//bruker hash table isteden for array for å vise at vi kan bruke det.
+	//søking i en hashtable gjøres også i konstant tid og gjøres kjapperen enn i en arraylist.
 	private  Hashtable<Integer,String> userAnswers = new Hashtable<Integer, String>();
-    private TextView timeLeft = null;
+	private TextView timeLeft = null;
 	private static int questionIndex=0;
 	private long minutesUntilFinished=120;
 	private	long secondsUntilFinished=minutesUntilFinished*60;
@@ -60,25 +60,25 @@ public class ExamOneActivity extends Activity implements IExam {
 	private boolean inThisActivity= true;
 	private boolean isNotificationRunning=false;
 	/// <summary>
-    /// Gets the filestream from the input file.
-    /// </summary>
+	/// Gets the filestream from the input file.
+	/// </summary>
 	private InputStream getFileStream(String file){
 		InputStream instream =null;
 		AssetManager assetManager = getAssets();
 		try {
-			 instream = assetManager.open(file.trim());
+			instream = assetManager.open(file.trim());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-				e.printStackTrace();
-			 errorWriter.saveDataToFile(e.toString(), context);
-			
+			e.printStackTrace();
+			errorWriter.saveDataToFile(e.toString(), context);
+
 		}
-		
+
 		return instream;
 	}
 	/// <summary>
-    /// This is run when the application is created.
-    /// </summary>
+	/// This is run when the application is created.
+	/// </summary>
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -94,21 +94,21 @@ public class ExamOneActivity extends Activity implements IExam {
 			} catch (XmlPullParserException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				 errorWriter.saveDataToFile(e.toString(), context);
+				errorWriter.saveDataToFile(e.toString(), context);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				errorWriter.saveDataToFile(e.toString(), context);
 			}
 		}
-		
+
 		setContentView(R.layout.activity_exam_one);
-		
-		
+
+
 	}
 	/// <summary>
-    /// This method is run after create.
-    /// </summary>
+	/// This method is run after create.
+	/// </summary>
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
@@ -120,8 +120,8 @@ public class ExamOneActivity extends Activity implements IExam {
 		}
 	}
 	/// <summary>
-    /// This method is run when the activity is paused.
-    /// </summary>
+	/// This method is run when the activity is paused.
+	/// </summary>
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
@@ -131,18 +131,18 @@ public class ExamOneActivity extends Activity implements IExam {
 			notification.startInForeground(context);
 			isNotificationRunning=true;
 		}
-		
+
 	}
 	/// <summary>
-    /// This method is run when the activity is resumed.
-    /// </summary>
+	/// This method is run when the activity is resumed.
+	/// </summary>
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.w("myApp","Resumed");
 		if(isNotificationRunning){
-		notification.cancleNotification(notification.NOTIFICATION_ID);
+			notification.cancleNotification(notification.NOTIFICATION_ID);
 		}
 		isNotificationRunning=false;
 		if(!allQuestions.isEmpty()){	
@@ -152,66 +152,66 @@ public class ExamOneActivity extends Activity implements IExam {
 			header.setText("XML dokumentet ble ikke lest.");
 		}
 	}
-/// <summary>
-/// This method is run when backButton is pressed.
-/// </summary>
-@Override
-public void onBackPressed() {
-	// TODO Auto-generated method stub
-	super.onBackPressed();
-	inThisActivity=false;
-}
-/// <summary>
-/// When an option item is selected run this code.
-/// </summary>
-@Override
-public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-        case android.R.id.home:
-            // app icon in action bar clicked; goto parent activity.
-            this.finish();
-          /// This method is run when backButton in the action bar is pressed.
-            onBackPressed();
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
-    }
-}
 	/// <summary>
-    /// This method is run each time you tilt your phone.
-    /// </summary>
+	/// This method is run when backButton is pressed.
+	/// </summary>
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		inThisActivity=false;
+	}
+	/// <summary>
+	/// When an option item is selected run this code.
+	/// </summary>
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			// app icon in action bar clicked; goto parent activity.
+			this.finish();
+			/// This method is run when backButton in the action bar is pressed.
+			onBackPressed();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+	/// <summary>
+	/// This method is run each time you tilt your phone.
+	/// </summary>
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-         super.onConfigurationChanged(newConfig);                
-         setContentView(R.layout.activity_exam_one);
-         if(!allQuestions.isEmpty()){	
- 			newExam();
- 		}else{
+		super.onConfigurationChanged(newConfig);                
+		setContentView(R.layout.activity_exam_one);
+		if(!allQuestions.isEmpty()){	
+			newExam();
+		}else{
 			TextView header = (TextView) findViewById(R.id.textViewFormulation);
 			header.setText("XML dokumentet ble ikke lest.");
 		}
- }
+	}
 	/// <summary>
-    /// Makes a new exam.
-    /// </summary>
+	/// Makes a new exam.
+	/// </summary>
 	private void newExam(){
 		if(questions.isEmpty()){
 			randomizeQuestions();
 			getQuestionList();
 			randomizeAlternatives();
-			 timer = new ExamTimer(millisUntilFinished,1000);
-			 timer.start();
-			
+			timer = new ExamTimer(millisUntilFinished,1000);
+			timer.start();
+
 		}
-		 timeLeft=(TextView) findViewById(R.id.textCountdownTime);
-			setUpButtons();
-			setQuestion();
-			createRadioButton();
+		timeLeft=(TextView) findViewById(R.id.textCountdownTime);
+		setUpButtons();
+		setQuestion();
+		createRadioButton();
 	}
-	
+
 	/// <summary>
-    /// Sets up the buttons
-    /// </summary>
+	/// Sets up the buttons
+	/// </summary>
 	public void setUpButtons(){
 		final Button btnPrev=(Button) findViewById(R.id.btnPrev);
 		final Button btnNext=(Button) findViewById(R.id.btnNext);
@@ -220,7 +220,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 		btnNext.setText("Next");
 		if(questionIndex<1){
 			btnPrev.setVisibility(View.INVISIBLE);
-			}
+		}
 		updateProgress();
 		btnPrev.setOnClickListener(new View.OnClickListener(){
 
@@ -232,7 +232,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 					setQuestion();
 					createRadioButton();
 					updateProgress();
-					
+
 				}else if(questionIndex==1){
 					btnPrev.setVisibility(View.INVISIBLE);
 					registerUserAnswer();
@@ -244,7 +244,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 				btnNext.setVisibility(View.VISIBLE);
 			}
 		}); 
-		
+
 		btnCommit.setOnClickListener(new View.OnClickListener(){
 
 			@Override
@@ -253,104 +253,104 @@ public boolean onOptionsItemSelected(MenuItem item) {
 				deliverResult();
 			}
 		}); 
-		
-		
-		
-	
+
+
+
+
 		btnNext.setOnClickListener(new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				int secondLastQuestion=questions.size()-2;
 				if(questionIndex<secondLastQuestion){
-						registerUserAnswer();
-						questionIndex++;
-						setQuestion();
-						createRadioButton();
-						updateProgress();
-					}else if(questionIndex==secondLastQuestion){
-						btnNext.setVisibility(View.INVISIBLE);
-						registerUserAnswer();
-						questionIndex++;
-						setQuestion();
-						createRadioButton();
-						updateProgress();
-					}
+					registerUserAnswer();
+					questionIndex++;
+					setQuestion();
+					createRadioButton();
+					updateProgress();
+				}else if(questionIndex==secondLastQuestion){
+					btnNext.setVisibility(View.INVISIBLE);
+					registerUserAnswer();
+					questionIndex++;
+					setQuestion();
+					createRadioButton();
+					updateProgress();
+				}
 				btnPrev.setVisibility(View.VISIBLE);
 			}
 		});
-		
-		
-		
+
+
+
 	}
 	/// <summary>
-    /// Creates the buttons
-    /// </summary>
+	/// Creates the buttons
+	/// </summary>
 	public void createRadioButton() {
 		int numberOfAlternatives=questions.get(questionIndex).getAlternatives().size();
 		RadioGroup buttonGroup = (RadioGroup) findViewById(R.id.fullscreen_content);
 		removeRadioButton();
 		RadioButton[] rb = new RadioButton[numberOfAlternatives];
-		 
+
 		for (int i = 0; i < numberOfAlternatives; i++) {
 			rb[i]  = new RadioButton(this);
 			// I did this with code to show how to add colors dynamic
 			rb[i].setTextColor(Color.parseColor("#FFFFFF"));
-	        buttonGroup.addView(rb[i]); //the RadioButtons are added to the radioGroup instead of the layout
-	        
-	        ((RadioButton) buttonGroup.getChildAt(i)).setText(questions.get(questionIndex).getAlternatives().get(i).toString());
-	       
-		        if(((String) rb[i].getText()).equals(userAnswers.get(questionIndex))){
-		        	rb[i].setChecked(true);
-		        }
-	    }
-	
+			buttonGroup.addView(rb[i]); //the RadioButtons are added to the radioGroup instead of the layout
+
+			((RadioButton) buttonGroup.getChildAt(i)).setText(questions.get(questionIndex).getAlternatives().get(i).toString());
+
+			if(((String) rb[i].getText()).equals(userAnswers.get(questionIndex))){
+				rb[i].setChecked(true);
+			}
+		}
+
 	}
-	
-	
-	 /// <summary>
-    /// Sets the question text in textview textViewFormulation and if there is an image it will be visible.
-    /// </summary>
- public void setQuestion(){
-  TextView formulationTextView = (TextView) findViewById(R.id.textViewFormulation); 
-  ImageView questionImageView =(ImageView) findViewById(R.id.imageView_questions);
-  formulationTextView.setText(questions.get(questionIndex).getFormulation());
-  
-  if(questions.get(questionIndex).getImage()!=null){
-	  questionImageView.setVisibility(View.VISIBLE);
-   questionImageView.setImageResource(setImageResource());
-  }else{
-   questionImageView.setVisibility(View.GONE);
-  } 
-  
- }
- /// <summary>
- /// Sets the  image resource path.
- /// </summary>
- public  int setImageResource(){
-   
-   String uri = questions.get(questionIndex).getImage().trim();
-   int imageResource=0;
-   try{
-   imageResource = this.getResources().getIdentifier(uri, "drawable", getPackageName());
-   }catch( Resources.NotFoundException e){
-	   e.printStackTrace();
-	 errorWriter.saveDataToFile(e.toString(), context);
-   }
-   
-  return  imageResource;
- }
-	
+
+
 	/// <summary>
-    /// Removes the radiobuttons from the radiogroup.
-    /// </summary>
+	/// Sets the question text in textview textViewFormulation and if there is an image it will be visible.
+	/// </summary>
+	public void setQuestion(){
+		TextView formulationTextView = (TextView) findViewById(R.id.textViewFormulation); 
+		ImageView questionImageView =(ImageView) findViewById(R.id.imageView_questions);
+		formulationTextView.setText(questions.get(questionIndex).getFormulation());
+
+		if(questions.get(questionIndex).getImage()!=null){
+			questionImageView.setVisibility(View.VISIBLE);
+			questionImageView.setImageResource(setImageResource());
+		}else{
+			questionImageView.setVisibility(View.GONE);
+		} 
+
+	}
+	/// <summary>
+	/// Sets the  image resource path.
+	/// </summary>
+	public  int setImageResource(){
+
+		String uri = questions.get(questionIndex).getImage().trim();
+		int imageResource=0;
+		try{
+			imageResource = this.getResources().getIdentifier(uri, "drawable", getPackageName());
+		}catch( Resources.NotFoundException e){
+			e.printStackTrace();
+			errorWriter.saveDataToFile(e.toString(), context);
+		}
+
+		return  imageResource;
+	}
+
+	/// <summary>
+	/// Removes the radiobuttons from the radiogroup.
+	/// </summary>
 	public void removeRadioButton(){
 		RadioGroup buttonGroup = (RadioGroup) findViewById(R.id.fullscreen_content);
 		buttonGroup.removeAllViews();
 	}
 	/// <summary>
-    /// Updates the progress bar
-    /// </summary>
+	/// Updates the progress bar
+	/// </summary>
 	public void updateProgress(){
 		TextView q = (TextView) findViewById(R.id.textViewQuestionCount);
 		q.setText(questionIndex+1+"/"+questions.size());
@@ -358,152 +358,152 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
 
 	/// <summary>
-    /// Shuffles the questions.
-    /// </summary>
+	/// Shuffles the questions.
+	/// </summary>
 	public void randomizeQuestions(){
 		long seed = System.nanoTime();
 		Collections.shuffle(allQuestions,new Random(seed));
 	}
 	/// <summary>
-    /// Shuffles the Alternatives.
-    /// </summary>	
+	/// Shuffles the Alternatives.
+	/// </summary>	
 	public void randomizeAlternatives(){
-		
+
 		for(int i=0;i<questions.size();i++){
 			long seed = System.nanoTime();
-		Collections.shuffle(questions.get(i).getAlternatives(),new Random(seed));
+			Collections.shuffle(questions.get(i).getAlternatives(),new Random(seed));
 		}
 	}
 	/// <summary>
-    /// Sets the questionslist to 45 questions
-    /// </summary>
+	/// Sets the questionslist to 45 questions
+	/// </summary>
 	public void getQuestionList(){
 		for(int i=0; i<45;i++){
-		questions.add(allQuestions.get(i));
+			questions.add(allQuestions.get(i));
 		}
 	}
-	
+
 	/// <summary>
-    /// Registrers the user answer in the hashtable
-    /// </summary>
+	/// Registrers the user answer in the hashtable
+	/// </summary>
 	public void registerUserAnswer(){
-		
+
 		RadioGroup buttonGroup = (RadioGroup) findViewById(R.id.fullscreen_content);
 		TextView checkAnswer = (TextView) findViewById(R.id.checkAnswer);
 		String rightAnswer=questions.get(questionIndex).getRightAnswer();
 		int selectedButton=buttonGroup.getCheckedRadioButtonId();
 		if(selectedButton>-1){
-		RadioButton radioButton = (RadioButton) findViewById(selectedButton);
+			RadioButton radioButton = (RadioButton) findViewById(selectedButton);
 			String selectedAnswer = (String) radioButton.getText();
 			userAnswers.put(questionIndex,selectedAnswer);
-			
+
 			/* Debug logic  added this function to check if i answered correct without delivering result.*/
 			if(rightAnswer.equals(selectedAnswer) && selectedAnswer != null){
 				checkAnswer.setText("Du svarte riktig");
-				
+
 			}else{
 				checkAnswer.setText("Du svarte feil");
 			}
 			buttonGroup.clearCheck();
 		}else{
 			if(userAnswers.get(questionIndex)==null){
-			checkAnswer.setText("Du svarte ikke noe");
-			userAnswers.put(questionIndex," ");
+				checkAnswer.setText("Du svarte ikke noe");
+				userAnswers.put(questionIndex," ");
 			}
 			buttonGroup.clearCheck();
 		}
 		/* End Debug logic */
 	}
-	
+
 	/// <summary>
-    /// Sends the result to ResultActivity.
-    /// </summary>
+	/// Sends the result to ResultActivity.
+	/// </summary>
 	public void deliverResult(){
 		registerUserAnswer();
 		Intent intent = new Intent(ExamOneActivity.this, com.nicklase.bilteori.gui.ResultActivity.class);
 		String[][] arrays = convertResultToArray();
-		
+
 		Bundle bundle=new Bundle(); 
-	  	String time=minutesUsed+":"+secondsUsed;
+		String time=minutesUsed+":"+secondsUsed;
 		bundle.putStringArray("questionsArray", arrays[0]);
 		bundle.putStringArray("userAnswerArray", arrays[1]);
 		bundle.putStringArray("questionsAnswerArray", arrays[2]);
 		bundle.putCharSequence("tid", time);
 		inThisActivity=false;
-         intent.putExtras(bundle);
-         startActivity(intent);
-         finish();
-}
+		intent.putExtras(bundle);
+		startActivity(intent);
+		finish();
+	}
 	/// <summary>
-    /// converts the result to a multidimensonal string array
-    /// </summary>
+	/// converts the result to a multidimensonal string array
+	/// </summary>
 	private String[][] convertResultToArray(){
 		String [][] result = new String[3][questions.size()];
 		String[] questionsToSend = new String[questions.size()];
 		String[] userAnswersToSend = new String[questions.size()];
 		String[] answersToSend = new String[questions.size()];
-		
+
 		for(int i =0;i<questions.size();i++){
 			questionsToSend[i]=questions.get(i).getFormulation().toString();
 			answersToSend[i]=questions.get(i).getRightAnswer().toString();
 			userAnswersToSend[i]=userAnswers.get(i);
 		}
-		
+
 		result[0]=questionsToSend;
 		result[1]=userAnswersToSend;
 		result[2]=answersToSend;
-		
+
 		return result;
 	}
 
-/// <summary>
-/// A inner class which extends CountDownTimer which counts down from 120min to 0
-/// </summary>
+	/// <summary>
+	/// A inner class which extends CountDownTimer which counts down from 120min to 0
+	/// </summary>
 	public class ExamTimer extends CountDownTimer {
 		public ExamTimer(long millisInFuture, long countDownInterval) {
-        	
-            super(millisInFuture, countDownInterval);
-            
-        }
 
-        @Override
-        public void onFinish() {
-        	
-        	deliverResult();
-        }
+			super(millisInFuture, countDownInterval);
 
-        @Override
-        public void onTick(long millisUntilFinished) {
-        	double secondsUntilFinished = (millisUntilFinished/1000)%60;
-        	
-        	double minutsUntilFinished = (millisUntilFinished/1000)/60;
-        	
-        	minutesUsed=(int) (120-minutsUntilFinished)-1;
-        	secondsUsed= (int) (60-secondsUntilFinished);
-      
-        	timeLeft.setText("Tid igjen: " + (int) minutsUntilFinished + " minutter " + (int) secondsUntilFinished  + " sekunder");
-        }
-        
+		}
 
-    };
+		@Override
+		public void onFinish() {
 
- 
-  /// <summary>
-    /// This method reset the exam.
-    /// </summary>
-    @Override
-    protected void onDestroy() {
-    	// TODO Auto-generated method stub
-    	super.onDestroy();
-    	if(timer!=null){
-        	timer.cancel();
-        	}
-        	
-        	Log.w("myApp", "Du lukket eksamen.");
-        	userAnswers.clear();
-        	allQuestions.clear();
-    		questions.clear();
-    		questionIndex=0;
-    }
-      
+			deliverResult();
+		}
+
+		@Override
+		public void onTick(long millisUntilFinished) {
+			double secondsUntilFinished = (millisUntilFinished/1000)%60;
+
+			double minutsUntilFinished = (millisUntilFinished/1000)/60;
+
+			minutesUsed=(int) (120-minutsUntilFinished)-1;
+			secondsUsed= (int) (60-secondsUntilFinished);
+
+			timeLeft.setText("Tid igjen: " + (int) minutsUntilFinished + " minutter " + (int) secondsUntilFinished  + " sekunder");
+		}
+
+
+	};
+
+
+	/// <summary>
+	/// This method reset the exam.
+	/// </summary>
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if(timer!=null){
+			timer.cancel();
+		}
+
+		Log.w("myApp", "Du lukket eksamen.");
+		userAnswers.clear();
+		allQuestions.clear();
+		questions.clear();
+		questionIndex=0;
+	}
+
 }

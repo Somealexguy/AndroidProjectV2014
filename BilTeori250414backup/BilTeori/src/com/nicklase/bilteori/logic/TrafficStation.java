@@ -11,10 +11,9 @@ public class TrafficStation {
 	private float distanceTo;
 	private float bearing;
 	/// <summary>
-	///  Constructor fir TrafficStation class.
+	///  Constructor for TrafficStation class.
 	/// </summary>
-	public TrafficStation(String stationName,LatLng latlng,
-			String info) {
+	public TrafficStation(String stationName,LatLng latlng, String info) {
 		super();
 		this.lat=latlng.latitude;
 		this.lon=latlng.longitude;
@@ -66,6 +65,6 @@ public class TrafficStation {
 	public void setBearing(float bearing) {
 		this.bearing = bearing;
 	}
-	
-	
+
+
 }

@@ -7,12 +7,12 @@ import android.preference.CheckBoxPreference;
 import android.widget.CheckBox;
 
 public class CheckboxChecked extends Application{
-	
+
 	public static int firstTime = 1;
 
 	public void onCreate()
 	{	super.onCreate();
-	
+
 	}
 
 }
