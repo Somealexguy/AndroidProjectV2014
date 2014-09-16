@@ -1,9 +1,0 @@
-Implisitte intents matcher komponenter med action,, category og eller data
-krever intent filter
-komponenter har intent filtere for å støtte implisitte intenter 
-må defineres i manifest filen
-En action beskriver hva som skal utføres
-En intent har ikke flere enn en action
-intent filter inneholder null eller flere actions
-Hvis du ikke har en action i intent filteret vil du aldri kunne kalle den ved en implisitt intent
-En intent uten noen action vil matche alle intent filtere med 1 action

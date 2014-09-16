@@ -1,2 +1,0 @@
-INDEX VERSION 1.126+C:\Users\nicklas\Documents\IT-Studie\2. året 2.semester\android\.metadata\.plugins\org.eclipse.jdt.core
-3271193799.index
